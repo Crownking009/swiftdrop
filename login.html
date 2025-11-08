@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SwiftDrop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-brand">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <span>Swift<span class="gold">Drop</span></span>
+                </div>
+                <h1>Welcome Back!</h1>
+                <p>Login to access your dashboard and manage your deliveries.</p>
+            </div>
+        </div>
+        
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-form-container">
+    <a href="index.html" class="back-home-btn">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Home</span>
+    </a>
+                <div class="auth-header">
+                    <h2>Login to Your Account</h2>
+                    <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" value="demo@swiftdrop.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" value="password123" required>
+                            <button type="button" class="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row space-between">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-block">
+                        <span>Login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+                    
+                    <div class="demo-credentials">
+                        <p><strong>Demo Credentials:</strong></p>
+                        <p>Email: demo@swiftdrop.com</p>
+                        <p>Password: password123</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Password toggle
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const input = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                const userData = {
+                    firstName: 'Demo',
+                    lastName: 'User',
+                    email: document.getElementById('email').value,
+                    phone: '+234 800 000 0000',
+                    userType: 'customer'
+                };
+                
+                localStorage.setItem('swiftdrop_user', JSON.stringify(userData));
+                localStorage.setItem('swiftdrop_token', 'demo_token_' + Date.now());
+                
+                window.location.href = 'user/dashboard.html';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SwiftDrop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <span>Swift<span class="gold">Drop</span></span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="request.html" class="nav-item">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Request Delivery</span>
+                </a>
+                <a href="track.html" class="nav-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Track Orders</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-history"></i>
+                    <span>Order History</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Wallet</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, <span id="userName">User</span>!</p>
+                </div>
+                <div class="top-bar-right">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-menu">
+                        <div class="user-avatar">
+                            <span id="userInitials">DU</span>
+                        </div>
+                        <div class="user-info">
+                            <span id="userFullName">Demo User</span>
+                            <span>Customer</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content Area -->
+            <main class="content-area">
+                <!-- Dashboard Cards -->
+                <div class="dashboard-cards">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-icon blue">
+                                <i class="fas fa-box"></i>
+                            </div>
+                        </div>
+                        <div class="dash-card-value">23</div>
+                        <div class="dash-card-label">Total Deliveries</div>
+                        <div class="dash-card-trend up">
+                            <i class="fas fa-arrow-up"></i> 12% this month
+                        </div>
+                    </div>
+                    
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="dash-card-value">18</div>
+                        <div class="dash-card-label">Completed</div>
+                        <div class="dash-card-trend up">
+                            <i class="fas fa-arrow-up"></i> 8% increase
+                        </div>
+                    </div>
+                    
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-icon yellow">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="dash-card-value">2</div>
+                        <div class="dash-card-label">In Progress</div>
+                        <div class="dash-card-trend">
+                            <i class="fas fa-circle"></i> Active now
+                        </div>
+                    </div>
+                    
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div class="dash-card-icon purple">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                        </div>
+                        <div class="dash-card-value">₦45,200</div>
+                        <div class="dash-card-label">Total Spent</div>
+                        <div class="dash-card-trend up">
+                            <i class="fas fa-arrow-up"></i> ₦5,400
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="request.html" class="quick-action-btn">
+                            <div class="quick-action-icon blue">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="quick-action-text">
+                                <h3>New Delivery</h3>
+                                <p>Request a delivery now</p>
+                            </div>
+                        </a>
+                        <a href="track.html" class="quick-action-btn">
+                            <div class="quick-action-icon green">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="quick-action-text">
+                                <h3>Track Order</h3>
+                                <p>View active deliveries</p>
+                            </div>
+                        </a>
+                        <a href="#" class="quick-action-btn">
+                            <div class="quick-action-icon yellow">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="quick-action-text">
+                                <h3>Order History</h3>
+                                <p>View past deliveries</p>
+                            </div>
+                        </a>
+                        <a href="#" class="quick-action-btn">
+                            <div class="quick-action-icon purple">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="quick-action-text">
+                                <h3>Add Payment</h3>
+                                <p>Manage payment methods</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Recent Orders -->
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h2>Recent Orders</h2>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                    <div class="orders-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Rider</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#SD001</strong></td>
+                                    <td>Ikeja, Lagos</td>
+                                    <td>Victoria Island</td>
+                                    <td>Ahmed B.</td>
+                                    <td>₦2,500</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#SD002</strong></td>
+                                    <td>Lekki Phase 1</td>
+                                    <td>Ikoyi</td>
+                                    <td>Chidi O.</td>
+                                    <td>₦1,800</td>
+                                    <td><span class="status-badge in-progress">In Progress</span></td>
+                                    <td><button class="btn-view">Track</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#SD003</strong></td>
+                                    <td>Surulere</td>
+                                    <td>Yaba</td>
+                                    <td>Ibrahim M.</td>
+                                    <td>₦1,200</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script>
+        // Load user data
+        const userData = JSON.parse(localStorage.getItem('swiftdrop_user'));
+        if (!userData) {
+            window.location.href = '../login.html';
+        } else {
+            document.getElementById('userName').textContent = userData.firstName;
+            document.getElementById('userFullName').textContent = `${userData.firstName} ${userData.lastName}`;
+            const initials = `${userData.firstName[0]}${userData.lastName[0]}`;
+            document.getElementById('userInitials').textContent = initials;
+        }
+        
+        function logout() {
+            localStorage.removeItem('swiftdrop_user');
+            localStorage.removeItem('swiftdrop_token');
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html>
