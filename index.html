@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftDrop - Deliver Smarter. Faster. Easier.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS & JS (CDN) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
+
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass-nav">
+        <div class="container nav-container">
+            <div class="logo pulse-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-motorcycle"></i>
+                </div>
+                <span>Swift<span class="gold">Drop</span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="become-rider.html">Become a Rider</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn-secondary glow-btn">Login</a>
+                <a href="register.html" class="btn-primary glow-btn">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <div class="hero-badge bounce-in">
+                    <i class="fas fa-star"></i> #1 Logistics Platform
+                </div>
+                <h1 class="gradient-text">Deliver Smarter. <br><span class="typing-text">Faster. Easier.</span></h1>
+                <p class="hero-subtitle">Connect with verified dispatch riders in your area for instant pickup and delivery services. Track your package in real-time with our cutting-edge technology.</p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn-primary btn-large btn-glow">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="how-it-works.html" class="btn-outline btn-large btn-hover-fill">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Watch Demo</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat glass-card bounce-in" style="animation-delay: 0.2s">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="counter" data-target="5000">0</h3>
+                        <p>Active Riders</p>
+                    </div>
+                    <div class="stat glass-card bounce-in" style="animation-delay: 0.4s">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3 class="counter" data-target="50000">0</h3>
+                        <p>Deliveries</p>
+                    </div>
+                    <div class="stat glass-card bounce-in" style="animation-delay: 0.6s">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3><span class="counter" data-target="4.8">0</span>★</h3>
+                        <p>Rating</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image fade-in-right">
+                <div class="hero-illustration floating">
+                    <div class="delivery-bike">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <div class="delivery-box box-1 float-animation">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="delivery-box box-2 float-animation" style="animation-delay: 0.5s">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="map-pin pin-1 pulse">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="map-pin pin-2 pulse" style="animation-delay: 0.3s">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Features</span>
+                <h2>Why Choose <span class="gradient-text">SwiftDrop</span>?</h2>
+                <p>Experience the future of logistics with our smart dispatch platform</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass-card card-reveal" data-delay="0">
+                    <div class="feature-icon gradient-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Track your delivery live on the map from pickup to drop-off with accurate ETA updates.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card glass-card card-reveal" data-delay="100">
+                    <div class="feature-icon gradient-icon">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Verified Riders</h3>
+                    <p>All riders are screened, verified, and trained to ensure safe and reliable service.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card glass-card card-reveal" data-delay="200">
+                    <div class="feature-icon gradient-icon">
+                        <i class="fas fa-bolt"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Instant Matching</h3>
+                    <p>Get connected with nearby available riders in seconds for quick pickups.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card glass-card card-reveal" data-delay="300">
+                    <div class="feature-icon gradient-icon">
+                        <i class="fas fa-credit-card"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>Safe and encrypted payment processing with multiple payment options.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card glass-card card-reveal" data-delay="400">
+                    <div class="feature-icon gradient-icon">
+                        <i class="fas fa-tags"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>Fair Pricing</h3>
+                    <p>Transparent pricing based on distance with the option to adjust your offer.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card glass-card card-reveal" data-delay="500">
+                    <div class="feature-icon gradient-icon">
+                        <i class="fas fa-headset"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support ready to assist you anytime.</p>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- image left and right Section -->
+<section class="naija__dispatch__section">
+    <!-- Left Image -->
+    <div class="naija__dispatch__img__left">
+        <img src="assets/images/bike1.png" alt="Dispatch Rider Left">
+    </div>
+
+    <!-- Center Text Content -->
+    <div class="naija__dispatch__content__wrapper">
+        <div class="naija__dispatch__text__container">
+            <h2 class="naija__dispatch__heading">Fast & Reliable Delivery</h2>
+            <p class="naija__dispatch__paragraph">
+                Experience the <span class="naija__dispatch__highlight">fastest delivery service</span> across Nigeria. 
+                Our professional dispatch riders are committed to delivering your packages safely and on time, 
+                ensuring your business operations run smoothly. From Lagos to Abuja, we've got you covered with 
+                <span class="naija__dispatch__highlight">real-time tracking</span> and dedicated customer support.
+            </p>
+        </div>
+    </div>
+
+    <!-- Right Image -->
+    <div class="naija__dispatch__img__right">
+        <img src="assets/images/bikk.png" alt="Dispatch Rider Right">
+    </div>
+</section>
+
+
+
+<!-- cities and area coverage -->
+<section class="lagos__coverage__section">
+    <div class="lagos__coverage__container">
+        <!-- Header -->
+        <div class="lagos__coverage__header">
+            <h2 class="lagos__coverage__title">We Cover All of Lagos</h2>
+            <p class="lagos__coverage__subtitle">From Mainland to Island - We Deliver Everywhere!</p>
+            <p class="lagos__coverage__description">
+                Experience seamless delivery across every corner of Lagos State. 
+                Our extensive network ensures your packages reach any destination, fast and secure.
+            </p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="lagos__coverage__content">
+            <!-- Map Section -->
+            <div class="lagos__map__container">
+                <svg class="lagos__map__svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.9" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Lagos State Shape -->
+                    <path d="M 100 250 L 150 150 L 250 120 L 350 140 L 400 200 L 420 280 L 380 350 L 300 380 L 200 370 L 150 340 L 100 280 Z" 
+                          fill="url(#mapGradient)" 
+                          stroke="#fbbf24" 
+                          stroke-width="3"
+                          opacity="0.9"/>
+                    
+                    <!-- Location Pins -->
+                    <circle cx="180" cy="200" r="8" fill="#fbbf24" stroke="#fff" stroke-width="2">
+                        <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="300" cy="220" r="8" fill="#fbbf24" stroke="#fff" stroke-width="2">
+                        <animate attributeName="r" values="8;12;8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="250" cy="300" r="8" fill="#fbbf24" stroke="#fff" stroke-width="2">
+                        <animate attributeName="r" values="8;12;8" dur="2s" begin="1s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="350" cy="250" r="8" fill="#fbbf24" stroke="#fff" stroke-width="2">
+                        <animate attributeName="r" values="8;12;8" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Text Labels -->
+                    <text x="250" y="450" text-anchor="middle" fill="#1e3a8a" font-size="24" font-weight="bold">LAGOS STATE</text>
+                    <text x="250" y="475" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="600">100% Coverage</text>
+                </svg>
+            </div>
+
+            <!-- Areas List Section -->
+            <div class="lagos__areas__container">
+                <!-- Lagos Mainland -->
+                <div class="lagos__area__card">
+                    <h3 class="lagos__area__title">
+                        <span class="lagos__area__icon">M</span>
+                        Lagos Mainland
+                    </h3>
+                    <ul class="lagos__area__list">
+                        <li class="lagos__area__item">Ikeja</li>
+                        <li class="lagos__area__item">Yaba</li>
+                        <li class="lagos__area__item">Surulere</li>
+                        <li class="lagos__area__item">Mushin</li>
+                        <li class="lagos__area__item">Oshodi</li>
+                        <li class="lagos__area__item">Ojota</li>
+                        <li class="lagos__area__item">Maryland</li>
+                        <li class="lagos__area__item">Gbagada</li>
+                        <li class="lagos__area__item">Ketu</li>
+                        <li class="lagos__area__item">Agege</li>
+                        <li class="lagos__area__item">Isolo</li>
+                        <li class="lagos__area__item">Egbeda</li>
+                    </ul>
+                </div>
+
+                <!-- Lagos Island -->
+                <div class="lagos__area__card">
+                    <h3 class="lagos__area__title">
+                        <span class="lagos__area__icon">I</span>
+                        Lagos Island
+                    </h3>
+                    <ul class="lagos__area__list">
+                        <li class="lagos__area__item">Victoria Island</li>
+                        <li class="lagos__area__item">Ikoyi</li>
+                        <li class="lagos__area__item">Lekki</li>
+                        <li class="lagos__area__item">Ajah</li>
+                        <li class="lagos__area__item">Marina</li>
+                        <li class="lagos__area__item">Banana Island</li>
+                        <li class="lagos__area__item">Oniru</li>
+                        <li class="lagos__area__item">Elegushi</li>
+                        <li class="lagos__area__item">Chevron</li>
+                        <li class="lagos__area__item">Epe</li>
+                        <li class="lagos__area__item">Ibeju-Lekki</li>
+                        <li class="lagos__area__item">Sangotedo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coverage Badge -->
+        <div class="lagos__coverage__badge">
+            <p class="lagos__badge__text">🚀 Complete Lagos Coverage - Mainland & Island</p>
+            <p class="lagos__badge__subtext">Fast, Reliable, Secure Delivery to Every Corner</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- pricing dispatch -->
+<!-- <section class="pricing__dispatch__section">
+    <div class="pricing__dispatch__container">
+      
+        <div class="pricing__dispatch__header">
+            <h2 class="pricing__dispatch__title">Flexible Pricing Plans</h2>
+            <p class="pricing__dispatch__subtitle">Choose the perfect delivery option for your needs</p>
+            <p class="pricing__dispatch__note">*Prices vary based on distance and package size</p>
+        </div>
+
+       
+        <div class="pricing__dispatch__grid">
+           
+            <div class="pricing__dispatch__card">
+                <div class="pricing__dispatch__badge">Popular</div>
+                <div class="pricing__dispatch__icon">📦</div>
+                <h3 class="pricing__dispatch__plan__name">Basic Delivery</h3>
+                <p class="pricing__dispatch__plan__desc">Perfect for small packages within Lagos</p>
+                
+                <div class="pricing__dispatch__price__wrapper">
+                    <span class="pricing__dispatch__currency">₦</span>
+                    <span class="pricing__dispatch__amount">1,500</span>
+                    <span class="pricing__dispatch__period">Starting from</span>
+                </div>
+
+                <ul class="pricing__dispatch__features">
+                    <li class="pricing__dispatch__feature">✓ Up to 5kg package</li>
+                    <li class="pricing__dispatch__feature">✓ Within 10km radius</li>
+                    <li class="pricing__dispatch__feature">✓ Same-day delivery</li>
+                    <li class="pricing__dispatch__feature">✓ Real-time tracking</li>
+                    <li class="pricing__dispatch__feature">✓ Basic insurance cover</li>
+                </ul>
+
+                <button class="pricing__dispatch__btn">Get Started</button>
+            </div>
+
+          
+            <div class="pricing__dispatch__card pricing__dispatch__card__featured">
+                <div class="pricing__dispatch__badge pricing__dispatch__badge__best">Best Value</div>
+                <div class="pricing__dispatch__icon">🚀</div>
+                <h3 class="pricing__dispatch__plan__name">Express Delivery</h3>
+                <p class="pricing__dispatch__plan__desc">Fast delivery for medium-sized packages</p>
+                
+                <div class="pricing__dispatch__price__wrapper">
+                    <span class="pricing__dispatch__currency">₦</span>
+                    <span class="pricing__dispatch__amount">2,800</span>
+                    <span class="pricing__dispatch__period">Starting from</span>
+                </div>
+
+                <ul class="pricing__dispatch__features">
+                    <li class="pricing__dispatch__feature">✓ Up to 15kg package</li>
+                    <li class="pricing__dispatch__feature">✓ Within 25km radius</li>
+                    <li class="pricing__dispatch__feature">✓ 2-4 hours delivery</li>
+                    <li class="pricing__dispatch__feature">✓ Priority tracking</li>
+                    <li class="pricing__dispatch__feature">✓ Full insurance cover</li>
+                    <li class="pricing__dispatch__feature">✓ Dedicated support</li>
+                </ul>
+
+                <button class="pricing__dispatch__btn pricing__dispatch__btn__featured">Get Started</button>
+            </div>
+
+           
+            <div class="pricing__dispatch__card">
+                <div class="pricing__dispatch__badge">Premium</div>
+                <div class="pricing__dispatch__icon">⚡</div>
+                <h3 class="pricing__dispatch__plan__name">Priority Delivery</h3>
+                <p class="pricing__dispatch__plan__desc">Ultra-fast for urgent deliveries</p>
+                
+                <div class="pricing__dispatch__price__wrapper">
+                    <span class="pricing__dispatch__currency">₦</span>
+                    <span class="pricing__dispatch__amount">4,500</span>
+                    <span class="pricing__dispatch__period">Starting from</span>
+                </div>
+
+                <ul class="pricing__dispatch__features">
+                    <li class="pricing__dispatch__feature">✓ Up to 30kg package</li>
+                    <li class="pricing__dispatch__feature">✓ Anywhere in Lagos</li>
+                    <li class="pricing__dispatch__feature">✓ 1-2 hours delivery</li>
+                    <li class="pricing__dispatch__feature">✓ Live GPS tracking</li>
+                    <li class="pricing__dispatch__feature">✓ Premium insurance</li>
+                    <li class="pricing__dispatch__feature">✓ 24/7 priority support</li>
+                    <li class="pricing__dispatch__feature">✓ Door-to-door service</li>
+                </ul>
+
+                <button class="pricing__dispatch__btn">Get Started</button>
+            </div>
+        </div>
+
+       
+        <div class="pricing__dispatch__calculator__cta">
+            <div class="pricing__dispatch__calculator__content">
+                <h3 class="pricing__dispatch__calculator__title">Need a Custom Quote?</h3>
+                <p class="pricing__dispatch__calculator__text">Calculate exact delivery cost based on your distance and package size</p>
+                <button class="pricing__dispatch__calculator__btn">Calculate Price →</button>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+
+
+
+
+
+
+
+
+<!-- price calculation Section -->
+<section class="pricing__dispatch__section">
+    <div class="pricing__dispatch__container">
+        <!-- Header -->
+        <div class="pricing__dispatch__header">
+            <h2 class="pricing__dispatch__title">Transparent Pricing</h2>
+            <p class="pricing__dispatch__subtitle">Pay only for what you need - Prices calculated automatically</p>
+            <p class="pricing__dispatch__note">*Final price depends on exact distance, package size, and delivery speed</p>
+        </div>
+
+        <!-- Price Range Cards -->
+        <div class="pricing__dispatch__range__grid">
+            <div class="pricing__dispatch__range__card">
+                <div class="pricing__dispatch__range__icon">🏙️</div>
+                <h3 class="pricing__dispatch__range__title">Lagos Mainland</h3>
+                <div class="pricing__dispatch__range__price">
+                    <span class="pricing__dispatch__range__from">From</span>
+                    <span class="pricing__dispatch__range__amount">₦800 - ₦3,500</span>
+                </div>
+                <p class="pricing__dispatch__range__desc">Ikeja, Yaba, Surulere, Oshodi, Maryland and more</p>
+            </div>
+
+            <div class="pricing__dispatch__range__card pricing__dispatch__range__featured">
+                <div class="pricing__dispatch__range__badge">Most Popular</div>
+                <div class="pricing__dispatch__range__icon">🌊</div>
+                <h3 class="pricing__dispatch__range__title">Lagos Island</h3>
+                <div class="pricing__dispatch__range__price">
+                    <span class="pricing__dispatch__range__from">From</span>
+                    <span class="pricing__dispatch__range__amount">₦1,200 - ₦5,500</span>
+                </div>
+                <p class="pricing__dispatch__range__desc">VI, Lekki, Ikoyi, Ajah, Marina and more</p>
+            </div>
+
+            <div class="pricing__dispatch__range__card">
+                <div class="pricing__dispatch__range__icon">📅</div>
+                <h3 class="pricing__dispatch__range__title">Scheduled Delivery</h3>
+                <div class="pricing__dispatch__range__price">
+                    <span class="pricing__dispatch__range__from">Save up to</span>
+                    <span class="pricing__dispatch__range__amount">30% OFF</span>
+                </div>
+                <p class="pricing__dispatch__range__desc">Next day or 2-day delivery options available</p>
+            </div>
+        </div>
+
+        <!-- Interactive Price Calculator -->
+        <div class="pricing__dispatch__calculator">
+            <div class="pricing__dispatch__calculator__header">
+                <h3 class="pricing__dispatch__calculator__title">📊 Estimate Your Delivery Cost</h3>
+                <p class="pricing__dispatch__calculator__subtitle">Get instant price estimate based on your delivery details</p>
+            </div>
+
+            <div class="pricing__dispatch__calculator__form">
+                <!-- Pickup Location -->
+                <div class="pricing__dispatch__form__group">
+                    <label class="pricing__dispatch__label">📍 Pickup Location</label>
+                    <select id="pickupLocation" class="pricing__dispatch__select">
+                        <option value="">Select pickup area</option>
+                        <option value="mainland">Mainland (Ikeja, Yaba, Surulere, etc.)</option>
+                        <option value="island">Island (VI, Lekki, Ikoyi, etc.)</option>
+                    </select>
+                </div>
+
+                <!-- Delivery Location -->
+                <div class="pricing__dispatch__form__group">
+                    <label class="pricing__dispatch__label">🎯 Delivery Location</label>
+                    <select id="deliveryLocation" class="pricing__dispatch__select">
+                        <option value="">Select delivery area</option>
+                        <option value="mainland">Mainland (Ikeja, Yaba, Surulere, etc.)</option>
+                        <option value="island">Island (VI, Lekki, Ikoyi, etc.)</option>
+                    </select>
+                </div>
+
+                <!-- Package Size -->
+                <div class="pricing__dispatch__form__group">
+                    <label class="pricing__dispatch__label">📦 Package Size</label>
+                    <select id="packageSize" class="pricing__dispatch__select">
+                        <option value="">Select package size</option>
+                        <option value="small">Small (Up to 5kg)</option>
+                        <option value="medium">Medium (5kg - 15kg)</option>
+                        <option value="large">Large (15kg - 30kg)</option>
+                        <option value="xlarge">Extra Large (30kg+)</option>
+                    </select>
+                </div>
+
+                <!-- Delivery Speed -->
+                <div class="pricing__dispatch__form__group">
+                    <label class="pricing__dispatch__label">⚡ Delivery Speed</label>
+                    <select id="deliverySpeed" class="pricing__dispatch__select">
+                        <option value="">Select delivery speed</option>
+                        <option value="express">Express (Same Day)</option>
+                        <option value="nextday">Next Day (Save 20%)</option>
+                        <option value="twoday">2-Day Delivery (Save 30%)</option>
+                    </select>
+                </div>
+
+                <button id="calculateBtn" class="pricing__dispatch__calculate__btn">Calculate Estimated Price</button>
+            </div>
+
+            <!-- Result Display -->
+            <div id="priceResult" class="pricing__dispatch__result" style="display: none;">
+                <div class="pricing__dispatch__result__content">
+                    <h4 class="pricing__dispatch__result__title">Estimated Delivery Cost</h4>
+                    <div class="pricing__dispatch__result__price">
+                        <span class="pricing__dispatch__result__currency">₦</span>
+                        <span id="estimatedPrice" class="pricing__dispatch__result__amount">0</span>
+                    </div>
+                    <p class="pricing__dispatch__result__note">Final price will be confirmed when available riders accept your order</p>
+                    <button class="pricing__dispatch__book__btn">Book Now & Get Available Riders</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- How Pricing Works -->
+        <div class="pricing__dispatch__explainer">
+            <h3 class="pricing__dispatch__explainer__title">How Our Pricing Works</h3>
+            <div class="pricing__dispatch__explainer__grid">
+                <div class="pricing__dispatch__explainer__step">
+                    <div class="pricing__dispatch__explainer__number">1</div>
+                    <h4 class="pricing__dispatch__explainer__step__title">Enter Details</h4>
+                    <p class="pricing__dispatch__explainer__step__text">Input pickup location, delivery address, and package size</p>
+                </div>
+                <div class="pricing__dispatch__explainer__step">
+                    <div class="pricing__dispatch__explainer__number">2</div>
+                    <h4 class="pricing__dispatch__explainer__step__title">Auto Price Generated</h4>
+                    <p class="pricing__dispatch__explainer__step__text">Our system calculates price based on distance and package details</p>
+                </div>
+                <div class="pricing__dispatch__explainer__step">
+                    <div class="pricing__dispatch__explainer__number">3</div>
+                    <h4 class="pricing__dispatch__explainer__step__title">Choose Your Rider</h4>
+                    <p class="pricing__dispatch__explainer__step__text">Available riders appear - you see their ratings and can select one</p>
+                </div>
+                <div class="pricing__dispatch__explainer__step">
+                    <div class="pricing__dispatch__explainer__number">4</div>
+                    <h4 class="pricing__dispatch__explainer__step__title">Track & Receive</h4>
+                    <p class="pricing__dispatch__explainer__step__text">Real-time tracking until your package is delivered safely</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- How It Works Section -->
+    <section class="how-it-works gradient-bg">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label light">Simple Process</span>
+                <h2 class="text-white">How It <span class="gold">Works</span></h2>
+                <p class="tt-white">Get your items delivered in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step glass-card-light step-reveal" data-step="1">
+                    <div class="step-number gradient-number">
+                        <span>1</span>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Request Delivery</h3>
+                    <p>Enter pickup and delivery addresses, view estimated price and available riders.</p>
+                    <div class="step-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="step glass-card-light step-reveal" data-step="2">
+                    <div class="step-number gradient-number">
+                        <span>2</span>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Get Matched</h3>
+                    <p>Nearby verified riders receive your request and the first to accept gets the job.</p>
+                    <div class="step-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="step glass-card-light step-reveal" data-step="3">
+                    <div class="step-number gradient-number">
+                        <span>3</span>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Track & Receive</h3>
+                    <p>Monitor your delivery in real-time and receive your package safely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Testimonials</span>
+                <h2>What Our <span class="gradient-text">Users Say</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-card card-reveal">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p>"SwiftDrop has transformed how I send packages. Fast, reliable, and the tracking feature gives me peace of mind!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Chidi Okafor</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card card-reveal" data-delay="100">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p>"As a rider, SwiftDrop has given me financial freedom. The app is easy to use and I get consistent orders!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Ahmed Bello</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card card-reveal" data-delay="200">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p>"Best logistics platform in Nigeria! Professional riders, transparent pricing, and excellent customer service."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Ngozi Eze</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section gradient-bg-alt">
+        <div class="container">
+            <div class="cta-content reveal">
+                <div class="cta-icon bounce-in">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>Ready to Experience Swift Delivery?</h2>
+                <p>Join thousands of satisfied customers and riders on our platform</p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn-primary btn-large btn-glow">
+                        <span>Sign Up as User</span>
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+                    <a href="become-rider.html" class="btn-outline-light btn-large">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Become a Rider</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Swift<span class="gold">Drop</span></span>
+                    </div>
+                    <p>Deliver Smarter. Faster. Easier.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Started</h4>
+                    <ul>
+                        <li><a href="register.html">Sign Up</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="become-rider.html">Become a Rider</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SwiftDrop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <!-- app script -->
+    <script src="js/map-leaflet-track.js" defer></script>
+</body>
+</html>
