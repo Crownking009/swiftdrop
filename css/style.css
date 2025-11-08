@@ -2419,3 +2419,322 @@ body {
         max-width: 250px;
     }
 }
+
+/* ===== partnership section ===== */
+.partners__section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.partners__section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+}
+
+.partners__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.partners__header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.partners__title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeInDown 0.8s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.partners__subtitle {
+    font-size: 1.2rem;
+    color: #6b7280;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Sliding Logos Section */
+.partners__slider__wrapper {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.partners__slider__wrapper::before,
+.partners__slider__wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.partners__slider__wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), transparent);
+}
+
+.partners__slider__wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), transparent);
+}
+
+.partners__slider {
+    display: flex;
+    animation: slideLogos 30s linear infinite;
+    width: fit-content;
+}
+
+.partners__slider:hover {
+    animation-play-state: paused;
+}
+
+@keyframes slideLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.partners__slide {
+    display: flex;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.partners__card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(30, 58, 138, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    min-width: 250px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.partners__card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.partners__card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(30, 58, 138, 0.25);
+    border-color: #fbbf24;
+}
+
+.partners__card:hover::before {
+    animation: shine 0.8s ease;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.partners__logo__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partners__logo {
+    max-width: 180px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.partners__card:hover .partners__logo {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* CTA Section */
+.partners__cta {
+    text-align: center;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(30, 58, 138, 0.3);
+    border: 3px solid #fbbf24;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.partners__cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+    animation: rotate-gradient 4s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.partners__cta__text {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.partners__cta__btn {
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #1e3a8a;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+@keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.partners__cta__btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+    animation: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .partners__section {
+        padding: 3rem 1.5rem;
+    }
+
+    .partners__title {
+        font-size: 2rem;
+    }
+
+    .partners__card {
+        padding: 1.5rem;
+        min-height: 120px;
+        min-width: 200px;
+    }
+
+    .partners__logo {
+        max-height: 60px;
+        max-width: 150px;
+    }
+
+    .partners__slider {
+        animation: slideLogos 20s linear infinite;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners__title {
+        font-size: 1.8rem;
+    }
+
+    .partners__cta__text {
+        font-size: 1.2rem;
+    }
+
+    .partners__cta__btn {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+
+    .partners__card {
+        min-width: 180px;
+    }
+}
