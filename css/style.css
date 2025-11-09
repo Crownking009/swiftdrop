@@ -3050,3 +3050,197 @@ body {
   .hiw-bike { animation: none; }
   .hiw-step-card, .feature-card { transition: none; transform: none; }
 }
+
+
+
+/* TERMS AND CONDITION*/
+
+
+
+   
+
+    
+
+        .terms__header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+    padding: 3rem 2rem;
+    padding-top: 6rem;  /* Add this line - adjust value based on your navbar height */
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+        .terms__header__title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .terms__header__date {
+            font-size: 1rem;
+            color: #dbeafe;
+            margin-bottom: 0.5rem;
+        }
+
+        .terms__header__intro {
+            font-size: 1.1rem;
+            color: #dbeafe;
+            max-width: 800px;
+            margin: 1rem auto 0;
+        }
+
+        .terms__container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .terms__toc {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.1);
+            margin-bottom: 3rem;
+            border-left: 5px solid #fbbf24;
+        }
+
+        .terms__toc__title {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .terms__toc__list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .terms__toc__item {
+            padding: 0.5rem 0;
+        }
+
+        .terms__toc__link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .terms__toc__link:hover {
+            color: #fbbf24;
+            padding-left: 0.5rem;
+        }
+
+        .terms__section {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.1);
+            margin-bottom: 2rem;
+            border-top: 4px solid #3b82f6;
+        }
+
+        .terms__section__title {
+            font-size: 1.8rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terms__section__number {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .terms__section__content p {
+            margin-bottom: 1rem;
+            color: #374151;
+            font-size: 1rem;
+        }
+
+        .terms__section__content ul,
+        .terms__section__content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms__section__content li {
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .terms__highlight {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #fbbf24;
+            margin: 1.5rem 0;
+        }
+
+        .terms__highlight__title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .terms__warning {
+            background: #fee2e2;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ef4444;
+            margin: 1.5rem 0;
+        }
+
+        .terms__warning__title {
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .terms__footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .terms__footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .terms__header__title {
+                font-size: 2rem;
+            }
+
+            .terms__container {
+                margin: 2rem auto;
+                padding: 0 1rem 2rem;
+            }
+
+            .terms__section {
+                padding: 1.5rem;
+            }
+
+            .terms__section__title {
+                font-size: 1.5rem;
+            }
+        }
