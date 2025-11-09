@@ -1315,9 +1315,10 @@ body {
     border: 2px solid rgba(59, 130, 246, 0.3);
 }
 
-.lagos__map__svg {
+.lagos__map__img {
     width: 100%;
     height: auto;
+    object-fit: contain;
     filter: drop-shadow(0 5px 15px rgba(59, 130, 246, 0.3));
 }
 
@@ -2741,5 +2742,4 @@ body {
 
 .blue-hite{
     color: #007bff;
-   
 }

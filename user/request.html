@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Delivery - SwiftDrop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <span>Swift<span class="gold">Drop</span></span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="request.html" class="nav-item active">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Request Delivery</span>
+                </a>
+                <a href="track.html" class="nav-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Track Orders</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-history"></i>
+                    <span>Order History</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Wallet</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1>Request Delivery</h1>
+                    <p>Send packages anywhere, anytime</p>
+                </div>
+                <div class="top-bar-right">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div class="user-menu">
+                        <div class="user-avatar">
+                            <span id="userInitials">DU</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content Area -->
+            <main class="content-area">
+                <div class="delivery-request-container">
+                    <!-- Left: Request Form -->
+                    <div class="request-form-card">
+                        <div class="request-steps">
+                            <div class="step-indicator active" data-step="1">
+                                <div class="step-number">1</div>
+                                <span>Location</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step-indicator" data-step="2">
+                                <div class="step-number">2</div>
+                                <span>Details</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step-indicator" data-step="3">
+                                <div class="step-number">3</div>
+                                <span>Confirm</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 1: Location -->
+                        <div class="form-step active" id="step1">
+                            <h2>Where would you like to send from?</h2>
+                            
+                            <div class="location-input-group">
+                                <div class="location-input-wrapper">
+                                    <div class="location-icon pickup">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <input type="text" id="pickupLocation" class="location-input" placeholder="Enter pickup address">
+                                    <button class="location-btn" onclick="getCurrentLocation('pickup')">
+                                        <i class="fas fa-crosshairs"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="location-divider"></div>
+                                
+                                <div class="location-input-wrapper">
+                                    <div class="location-icon dropoff">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <input type="text" id="dropoffLocation" class="location-input" placeholder="Enter delivery address">
+                                    <button class="location-btn" onclick="getCurrentLocation('dropoff')">
+                                        <i class="fas fa-crosshairs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="distance-info">
+                                <i class="fas fa-route"></i>
+                                <span>Distance: <strong id="distanceDisplay">--</strong></span>
+                                <span class="separator">•</span>
+                                <span>Est. Time: <strong id="timeDisplay">--</strong></span>
+                            </div>
+                            
+                            <div class="saved-locations">
+                                <h3>Saved Locations</h3>
+                                <div class="saved-location-list">
+                                    <button class="saved-location-item" onclick="selectSavedLocation('home')">
+                                        <i class="fas fa-home"></i>
+                                        <div>
+                                            <strong>Home</strong>
+                                            <p>15 Allen Avenue, Ikeja, Lagos</p>
+                                        </div>
+                                    </button>
+                                    <button class="saved-location-item" onclick="selectSavedLocation('work')">
+                                        <i class="fas fa-briefcase"></i>
+                                        <div>
+                                            <strong>Work</strong>
+                                            <p>Plot 5, Victoria Island, Lagos</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button class="btn-primary btn-block" onclick="nextStep(2)">
+                                <span>Continue</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Step 2: Package Details -->
+                        <div class="form-step" id="step2">
+                            <h2>Package Details</h2>
+                            
+                            <div class="package-types">
+                                <button class="package-type-btn active" data-type="small">
+                                    <i class="fas fa-box"></i>
+                                    <span>Small</span>
+                                    <small>Up to 5kg</small>
+                                </button>
+                                <button class="package-type-btn" data-type="medium">
+                                    <i class="fas fa-boxes"></i>
+                                    <span>Medium</span>
+                                    <small>5-15kg</small>
+                                </button>
+                                <button class="package-type-btn" data-type="large">
+                                    <i class="fas fa-dolly"></i>
+                                    <span>Large</span>
+                                    <small>15kg+</small>
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Package Description</label>
+                                <input type="text" id="packageDesc" placeholder="What are you sending?" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Recipient Name</label>
+                                <input type="text" id="recipientName" placeholder="Full name" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Recipient Phone</label>
+                                <input type="tel" id="recipientPhone" placeholder="+234 800 000 0000" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Special Instructions (Optional)</label>
+                                <textarea id="instructions" placeholder="Any special handling requirements?" class="form-control" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button class="btn-outline" onclick="prevStep(1)">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <span>Back</span>
+                                </button>
+                                <button class="btn-primary" onclick="nextStep(3)">
+                                    <span>Continue</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Confirm & Pay -->
+                        <div class="form-step" id="step3">
+                            <h2>Confirm Your Order</h2>
+                            
+                            <div class="order-summary">
+                                <div class="summary-section">
+                                    <h3>Route</h3>
+                                    <div class="route-display">
+                                        <div class="route-point">
+                                            <i class="fas fa-circle pickup-icon"></i>
+                                            <span id="summaryPickup">15 Allen Avenue, Ikeja</span>
+                                        </div>
+                                        <div class="route-line"></div>
+                                        <div class="route-point">
+                                            <i class="fas fa-map-marker-alt dropoff-icon"></i>
+                                            <span id="summaryDropoff">Plot 5, Victoria Island</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="summary-section">
+                                    <h3>Package Info</h3>
+                                    <div class="info-row">
+                                        <span>Size:</span>
+                                        <strong id="summarySize">Small Package</strong>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Description:</span>
+                                        <strong id="summaryDesc">Documents</strong>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Recipient:</span>
+                                        <strong id="summaryRecipient">John Doe</strong>
+                                    </div>
+                                </div>
+                                
+                                <div class="summary-section price-section">
+                                    <h3>Price Breakdown</h3>
+                                    <div class="price-row">
+                                        <span>Base Fare</span>
+                                        <span>₦1,500</span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span>Distance (12km)</span>
+                                        <span>₦600</span>
+                                    </div>
+                                    <div class="price-row">
+                                        <span>Service Fee</span>
+                                        <span>₦200</span>
+                                    </div>
+                                    <div class="price-row total">
+                                        <strong>Total</strong>
+                                        <strong class="price-amount">₦2,300</strong>
+                                    </div>
+                                    
+                                    <div class="price-adjuster">
+                                        <label>Adjust Offer:</label>
+                                        <div class="price-controls">
+                                            <button class="price-btn" onclick="adjustPrice(-100)">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" id="offerPrice" value="2300" class="price-input" readonly>
+                                            <button class="price-btn" onclick="adjustPrice(100)">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <small>Higher offers get faster pickup</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <h3>Payment Method</h3>
+                                <div class="payment-options">
+                                    <label class="payment-option active">
+                                        <input type="radio" name="payment" value="wallet" checked>
+                                        <div class="payment-content">
+                                            <i class="fas fa-wallet"></i>
+                                            <div>
+                                                <strong>Wallet</strong>
+                                                <p>Balance: ₦15,000</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="card">
+                                        <div class="payment-content">
+                                            <i class="fas fa-credit-card"></i>
+                                            <div>
+                                                <strong>Card</strong>
+                                                <p>Pay with card</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button class="btn-outline" onclick="prevStep(2)">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <span>Back</span>
+                                </button>
+                                <button class="btn-primary btn-glow" onclick="confirmOrder()">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Confirm & Request Rider</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Map Preview -->
+                    <div class="map-preview-card">
+                        <div id="mapPreview" class="map-container">
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <p>Map will show route here</p>
+                                <small>Google Maps integration</small>
+                            </div>
+                        </div>
+                        
+                        <div class="available-riders">
+                            <h3>Available Riders Nearby</h3>
+                            <div class="riders-list">
+                                <div class="rider-item">
+                                    <div class="rider-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="rider-info">
+                                        <strong>Ahmed Bello</strong>
+                                        <div class="rider-rating">
+                                            <i class="fas fa-star"></i> 4.8
+                                            <span class="rider-distance">0.5km away</span>
+                                        </div>
+                                    </div>
+                                    <div class="rider-status online">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="rider-item">
+                                    <div class="rider-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="rider-info">
+                                        <strong>Chidi Okonkwo</strong>
+                                        <div class="rider-rating">
+                                            <i class="fas fa-star"></i> 4.9
+                                            <span class="rider-distance">1.2km away</span>
+                                        </div>
+                                    </div>
+                                    <div class="rider-status online">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="rider-item">
+                                    <div class="rider-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="rider-info">
+                                        <strong>Ibrahim Mohammed</strong>
+                                        <div class="rider-rating">
+                                            <i class="fas fa-star"></i> 4.7
+                                            <span class="rider-distance">2.0km away</span>
+                                        </div>
+                                    </div>
+                                    <div class="rider-status online">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script src="../js/user.js"></script>
+    <script>
+        // Load user data
+        const userData = JSON.parse(localStorage.getItem('swiftdrop_user'));
+        if (!userData) {
+            window.location.href = '../login.html';
+        } else {
+            const initials = `${userData.firstName[0]}${userData.lastName[0]}`;
+            document.getElementById('userInitials').textContent = initials;
+        }
+        
+        function logout() {
+            localStorage.removeItem('swiftdrop_user');
+            localStorage.removeItem('swiftdrop_token');
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html>

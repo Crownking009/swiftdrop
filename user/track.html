@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - SwiftDrop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="tracking-page">
+        <!-- Live Map Container -->
+        <div class="live-map-container" id="liveMap">
+            <div class="map-overlay">
+                <!-- Back Button -->
+                <button class="back-to-dashboard" onclick="window.location.href='dashboard.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                
+                <!-- Order Status Card (Top) -->
+                <div class="status-card-top">
+                    <div class="status-header">
+                        <div class="status-icon searching" id="statusIcon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="status-text">
+                            <h3 id="statusTitle">Finding Rider...</h3>
+                            <p id="statusSubtitle">We're matching you with the best rider nearby</p>
+                        </div>
+                    </div>
+                    <div class="status-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rider Card (Shows when matched) -->
+                <div class="rider-card-floating" id="riderCard" style="display: none;">
+                    <div class="rider-card-content">
+                        <div class="rider-avatar-large">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="rider-details">
+                            <h3 id="riderName">Ahmed Bello</h3>
+                            <div class="rider-rating">
+                                <i class="fas fa-star"></i>
+                                <span id="riderRating">4.8</span>
+                                <span class="rating-count">(234 trips)</span>
+                            </div>
+                            <div class="rider-vehicle">
+                                <i class="fas fa-motorcycle"></i>
+                                <span id="riderVehicle">Honda CG 125 • LAG-234-AB</span>
+                            </div>
+                        </div>
+                        <div class="rider-actions">
+                            <button class="action-btn call-btn" onclick="callRider()">
+                                <i class="fas fa-phone"></i>
+                            </button>
+                            <button class="action-btn message-btn" onclick="messageRider()">
+                                <i class="fas fa-comment"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="eta-info">
+                        <div class="eta-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <small>Arrives in</small>
+                                <strong id="etaTime">5 mins</strong>
+                            </div>
+                        </div>
+                        <div class="eta-divider"></div>
+                        <div class="eta-item">
+                            <i class="fas fa-route"></i>
+                            <div>
+                                <small>Distance</small>
+                                <strong id="etaDistance">2.5 km</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Live Location Marker (Animated Rider) -->
+                <div class="live-marker" id="riderMarker" style="display: none;">
+                    <div class="marker-pulse"></div>
+                    <div class="marker-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                </div>
+                
+                <!-- Pickup & Dropoff Pins -->
+                <div class="location-pin pickup-pin" id="pickupPin">
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="location-pin dropoff-pin" id="dropoffPin">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                
+                <!-- Map Placeholder (Replace with Google Maps) -->
+                <div class="map-placeholder-bg">
+                    <div class="map-grid"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Drawer -->
+        <div class="bottom-drawer" id="bottomDrawer">
+            <div class="drawer-handle" onclick="toggleDrawer()">
+                <div class="handle-bar"></div>
+            </div>
+            
+            <div class="drawer-content">
+                <!-- Order Timeline -->
+                <div class="order-timeline">
+                    <div class="timeline-item completed" id="timeline1">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <strong>Order Placed</strong>
+                            <small id="time1">Just now</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item active" id="timeline2">
+                        <div class="timeline-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <strong>Finding Rider</strong>
+                            <small id="time2">In progress...</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" id="timeline3">
+                        <div class="timeline-icon">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <strong>Rider on the way</strong>
+                            <small id="time3">Waiting...</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" id="timeline4">
+                        <div class="timeline-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <strong>Package Picked Up</strong>
+                            <small id="time4">Waiting...</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" id="timeline5">
+                        <div class="timeline-icon">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <strong>Delivered</strong>
+                            <small id="time5">Waiting...</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Delivery Details -->
+                <div class="delivery-details">
+                    <h3>Delivery Details</h3>
+                    
+                    <div class="detail-card">
+                        <div class="detail-row">
+                            <div class="detail-label">
+                                <i class="fas fa-circle pickup-color"></i>
+                                <span>Pickup</span>
+                            </div>
+                            <p id="pickupAddress">15 Allen Avenue, Ikeja, Lagos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <div class="detail-row">
+                            <div class="detail-label">
+                                <i class="fas fa-map-marker-alt dropoff-color"></i>
+                                <span>Drop-off</span>
+                            </div>
+                            <p id="dropoffAddress">Plot 5, Victoria Island, Lagos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <div class="detail-row">
+                            <div class="detail-label">
+                                <i class="fas fa-box"></i>
+                                <span>Package</span>
+                            </div>
+                            <p id="packageInfo">Small Package - Documents</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <div class="detail-row">
+                            <div class="detail-label">
+                                <i class="fas fa-user"></i>
+                                <span>Recipient</span>
+                            </div>
+                            <p id="recipientInfo">John Doe • +234 800 000 0000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card price-card">
+                        <div class="detail-row">
+                            <div class="detail-label">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Total Amount</span>
+                            </div>
+                            <strong class="price-amount" id="totalAmount">₦2,300</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn-outline btn-block" onclick="shareTracking()">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share Tracking Link</span>
+                    </button>
+                    <button class="btn-danger btn-block" onclick="cancelOrder()">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Cancel Order</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal (When delivered) -->
+    <div class="modal" id="deliveryModal" style="display: none;">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Delivery Completed!</h2>
+            <p>Your package has been successfully delivered</p>
+            
+            <div class="modal-details">
+                <div class="modal-detail-row">
+                    <span>Order ID</span>
+                    <strong id="modalOrderId">#SD001</strong>
+                </div>
+                <div class="modal-detail-row">
+                    <span>Delivery Time</span>
+                    <strong id="modalDeliveryTime">23 mins</strong>
+                </div>
+                <div class="modal-detail-row">
+                    <span>Amount Paid</span>
+                    <strong id="modalAmount">₦2,300</strong>
+                </div>
+            </div>
+            
+            <div class="rating-section">
+                <p>How was your experience?</p>
+                <div class="star-rating">
+                    <i class="far fa-star" onclick="rateOrder(1)"></i>
+                    <i class="far fa-star" onclick="rateOrder(2)"></i>
+                    <i class="far fa-star" onclick="rateOrder(3)"></i>
+                    <i class="far fa-star" onclick="rateOrder(4)"></i>
+                    <i class="far fa-star" onclick="rateOrder(5)"></i>
+                </div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="btn-primary btn-block" onclick="closeModal()">
+                    <span>Done</span>
+                </button>
+                <button class="btn-outline btn-block" onclick="window.location.href='dashboard.html'">
+                    <span>View Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script>
+        // Simulate live tracking
+        let trackingInterval;
+        let currentStatus = 0;
+        let riderPosition = { x: 20, y: 30 };
+        
+        const statuses = [
+            { title: 'Finding Rider...', subtitle: 'We\'re matching you with the best rider nearby', icon: 'fa-search', class: 'searching' },
+            { title: 'Rider Found!', subtitle: 'Ahmed is on the way to pickup', icon: 'fa-motorcycle', class: 'matched' },
+            { title: 'Arriving Soon', subtitle: 'Ahmed is 2 mins away from pickup', icon: 'fa-clock', class: 'arriving' },
+            { title: 'Package Picked Up', subtitle: 'Ahmed is heading to delivery location', icon: 'fa-box', class: 'picked' },
+            { title: 'Arriving at Destination', subtitle: '1 min away from drop-off', icon: 'fa-map-marker-alt', class: 'delivering' },
+            { title: 'Delivered!', subtitle: 'Package delivered successfully', icon: 'fa-check-circle', class: 'delivered' }
+        ];
+        
+        function updateStatus(index) {
+            if (index >= statuses.length) return;
+            
+            const status = statuses[index];
+            document.getElementById('statusIcon').className = `status-icon ${status.class}`;
+            document.getElementById('statusIcon').innerHTML = `<i class="fas ${status.icon}"></i>`;
+            document.getElementById('statusTitle').textContent = status.title;
+            document.getElementById('statusSubtitle').textContent = status.subtitle;
+            
+            // Update progress
+            const progress = ((index + 1) / statuses.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            // Update timeline
+            for (let i = 1; i <= 5; i++) {
+                const item = document.getElementById(`timeline${i}`);
+                item.classList.remove('active', 'completed');
+                
+                if (i < index + 1) {
+                    item.classList.add('completed');
+                    document.getElementById(`time${i}`).textContent = 'Completed';
+                } else if (i === index + 1) {
+                    item.classList.add('active');
+                    document.getElementById(`time${i}`).textContent = 'In progress...';
+                }
+            }
+            
+            // Show rider card when matched
+            if (index >= 1) {
+                document.getElementById('riderCard').style.display = 'block';
+                document.getElementById('riderMarker').style.display = 'block';
+                animateRider();
+            }
+            
+            // Show completion modal
+            if (index === statuses.length - 1) {
+                setTimeout(() => {
+                    document.getElementById('deliveryModal').style.display = 'flex';
+                }, 2000);
+            }
+        }
+        
+        // Animate rider movement
+        function animateRider() {
+            const marker = document.getElementById('riderMarker');
+            let progress = 0;
+            
+            const moveInterval = setInterval(() => {
+                progress += 0.5;
+                if (progress > 100) {
+                    clearInterval(moveInterval);
+                    return;
+                }
+                
+                // Simulate movement from pickup to dropoff
+                const x = 20 + (progress * 0.6);
+                const y = 30 - (progress * 0.4);
+                
+                marker.style.left = `${x}%`;
+                marker.style.top = `${y}%`;
+                
+                // Update ETA
+                const remainingTime = Math.max(1, Math.floor((100 - progress) / 20));
+                document.getElementById('etaTime').textContent = `${remainingTime} min${remainingTime > 1 ? 's' : ''}`;
+                
+                const remainingDistance = Math.max(0.1, ((100 - progress) / 100 * 2.5)).toFixed(1);
+                document.getElementById('etaDistance').textContent = `${remainingDistance} km`;
+            }, 100);
+        }
+        
+        // Start tracking simulation
+        function startTracking() {
+            updateStatus(0);
+            
+            let statusIndex = 0;
+            trackingInterval = setInterval(() => {
+                statusIndex++;
+                if (statusIndex < statuses.length) {
+                    updateStatus(statusIndex);
+                } else {
+                    clearInterval(trackingInterval);
+                }
+            }, 5000); // Change status every 5 seconds
+        }
+        
+        // Toggle drawer
+        function toggleDrawer() {
+            const drawer = document.getElementById('bottomDrawer');
+            drawer.classList.toggle('expanded');
+        }
+        
+        // Action functions
+        function callRider() {
+            alert('Calling rider...');
+        }
+        
+        function messageRider() {
+            alert('Opening chat with rider...');
+        }
+        
+        function shareTracking() {
+            alert('Tracking link copied to clipboard!');
+        }
+        
+        function cancelOrder() {
+            if (confirm('Are you sure you want to cancel this order?')) {
+                clearInterval(trackingInterval);
+                alert('Order cancelled');
+                window.location.href = 'dashboard.html';
+            }
+        }
+        
+        function rateOrder(rating) {
+            const stars = document.querySelectorAll('.star-rating i');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('far');
+                    star.classList.add('fas');
+                } else {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                }
+            });
+        }
+        
+        function closeModal() {
+            document.getElementById('deliveryModal').style.display = 'none';
+            window.location.href = 'dashboard.html';
+        }
+        
+        // Load order data
+        const orderData = JSON.parse(localStorage.getItem('swiftdrop_current_order'));
+        if (orderData) {
+            document.getElementById('pickupAddress').textContent = orderData.pickup;
+            document.getElementById('dropoffAddress').textContent = orderData.dropoff;
+            document.getElementById('packageInfo').textContent = `${orderData.packageType} - ${orderData.description}`;
+            document.getElementById('recipientInfo').textContent = `${orderData.recipient} • ${orderData.recipientPhone}`;
+            document.getElementById('totalAmount').textContent = `₦${orderData.price.toLocaleString()}`;
+            document.getElementById('modalAmount').textContent = `₦${orderData.price.toLocaleString()}`;
+        }
+        
+        // Start tracking on load
+        window.addEventListener('load', () => {
+            startTracking();
+        });
+    </script>
+</body>
+</html>
