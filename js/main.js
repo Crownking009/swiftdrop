@@ -472,9 +472,34 @@ document.head.appendChild(style);
 
 
 
+// ===== ACTIVE NAV LINK menu=====
 
+    (function () {
+      // find nav links and mark the one matching the current filename as active
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      if (!navLinks.length) return;
 
+      const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
+      navLinks.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+        // match index/page names; treat empty href as index
+        if (!href && (current === '' || current === 'index.html')) {
+          link.classList.add('active');
+        } else if (href === current || (current === '' && href === 'index.html')) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+
+        // keep active on click (for non-navigation demos)
+        link.addEventListener('click', () => {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+    })();
+ 
 
 
 

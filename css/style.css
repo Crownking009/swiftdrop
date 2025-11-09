@@ -137,16 +137,78 @@ body {
 }
 
 .nav-menu a {
-    text-decoration: none;
+    
     color: var(--dark-charcoal);
     font-weight: 500;
-    font-size: 15px;
-    transition: var(--transition);
+    font-size: 17px;
+    /* transition: var(--transition); */
 }
 
-.nav-menu a:hover {
-    color: var(--primary-blue);
+
+
+/* ===== NAV ACTIVE + HOVER ANIMATION (unique, non-intrusive) ===== */
+
+.nav-menu a {
+  position: relative;
+  display: inline-block;
+  padding: 8px 6px;
+  
+  text-decoration: none;
+  transition: color .28s ease, transform .18s ease;
+  will-change: transform;
+  outline: none;
 }
+
+/* sliding underline / gradient bar */
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 100%;
+  border-radius: 3px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .32s cubic-bezier(.2,1,.3,1), opacity .2s;
+  opacity: .95;
+  pointer-events: none;
+}
+
+/* hover / focus — lift and reveal underline */
+.nav-menu a:hover,
+.nav-menu a:focus {
+  color: #ffd700;
+  transform: translateY(-4px);
+}
+.nav-menu a:hover::after,
+.nav-menu a:focus::after {
+  transform: scaleX(1);
+}
+
+/* active link styling (persisted) */
+.nav-menu a.active {
+  color: var(--primary-blue);
+  font-weight: 700;
+}
+.nav-menu a.active::after {
+  transform: scaleX(1);
+  bottom: -8px;
+  height: 4px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* keyboard visible focus */
+.nav-menu a:focus {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  border-radius: 6px;
+}
+
+/* small screens: slightly smaller translate */
+@media (max-width: 480px) {
+  .nav-menu a:hover, .nav-menu a:focus { transform: translateY(-2px); }
+}
+/* ...existing code... */
 
 .nav-buttons {
     display: flex;
@@ -2742,4 +2804,249 @@ body {
 
 .blue-hite{
     color: #007bff;
+}
+
+
+/* ===== HOW IT WORKS PAGE (hiw- prefix to avoid conflicts) ===== */
+
+.hiw-hero {
+  padding: 110px 0 48px;
+  background: linear-gradient(180deg, rgba(6,78,209,0.04), rgba(255,255,255,0));
+  position: relative;
+  overflow: visible;
+}
+
+.hiw-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 36px;
+  align-items: center;
+}
+
+.hiw-hero-content .section-label { display:inline-block; margin-bottom:12px; }
+.hiw-title { font-size: clamp(28px, 4.6vw, 48px); font-weight:800; margin-bottom:12px; line-height:1.05; }
+.hiw-lead { color: var(--light-text); font-size: 1.05rem; margin-bottom:18px; max-width:700px; }
+
+.hiw-hero-cta .btn-primary { margin-right:12px; }
+.hiw-hero-visual {
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* phone mockup */
+.hiw-phone-mockup{
+  width: 320px;
+  height: 520px;
+  border-radius: 28px;
+  background: linear-gradient(180deg,#ffffff,#f4f8ff);
+  box-shadow: 0 30px 80px rgba(15,30,80,0.12);
+  position: relative;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hiw-map-pin{
+  position:absolute;left:30px;top:28px;font-size:22px;color:#ff6b6b;
+  background:rgba(255,255,255,0.9);padding:8px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+.hiw-bike{
+  position:absolute;right:28px;bottom:30px;font-size:46px;color:var(--primary-blue); transform:translateY(0);
+  animation: bob 3s ease-in-out infinite;
+}
+@keyframes bob { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
+
+/* Steps grid */
+.hiw-steps-section { padding: 48px 0; }
+.hiw-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+.hiw-step-card {
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+  transition: transform .36s cubic-bezier(.2,1,.3,1), box-shadow .36s;
+}
+.hiw-step-card:hover { transform: translateY(-8px); box-shadow: 0 30px 70px rgba(8,64,160,0.12); }
+.hiw-step-badge {
+  width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#007BFF,#00C49A);color:white;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.hiw-step-card h3 { margin-bottom:8px; font-size:1.05rem; }
+.hiw-step-card p { color:var(--light-text); font-size:0.95rem; }
+
+/* Features grid (reuse feature-card but scoped) */
+.hiw-features-section { padding: 48px 0; background: linear-gradient(180deg,#fbfdff,#ffffff); }
+.hiw-features-grid {
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:18px;
+}
+.hiw-features-grid .feature-card {
+  padding:20px;border-radius:14px;background:#fff;box-shadow:0 18px 50px rgba(3,122,255,0.05);
+  text-align:center;transition:transform .28s,box-shadow .28s;
+}
+.hiw-features-grid .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+.hiw-features-grid .feature-icon {
+  width:64px;height:64px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#667eea,#764ba2);color:white;font-size:22px;
+}
+
+/* FAQ */
+// ...existing code...
+// ...existing code...
+/* ===== FAQ: centered large CTA (updated centering) ===== */
+.hiw-faq-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 22px;
+  z-index: 4;
+}
+
+/* big, attractive, animated CTA */
+.hiw-faq-more-btn {
+  display: block;                 /* ensure block so margin:auto centers reliably */
+  width: min(680px, 70%);         /* long button on wide screens */
+  max-width: 92%;
+  min-width: 260px;
+  margin: 0 auto;                 /* center in various layout contexts (grid/flex/flow) */
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(3,122,255,0.16);
+  background: linear-gradient(90deg, #007BFF 0%, #00C49A 45%, #FFD700 100%);
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s, filter .22s;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  text-align: center;
+}
+
+/* subtle lift + glow on hover/focus */
+.hiw-faq-more-btn:hover,
+.hiw-faq-more-btn:focus {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 26px 60px rgba(3,122,255,0.18);
+  filter: saturate(1.06);
+  outline: none;
+}
+
+/* accessible focus ring */
+.hiw-faq-more-btn:focus-visible {
+  box-shadow: 0 26px 60px rgba(3,122,255,0.18), 0 0 0 4px rgba(0,123,255,0.12);
+}
+
+/* animated shimmer sweep */
+.hiw-faq-more-btn::before {
+  content: "";
+  position: absolute;
+  left: -60%;
+  top: -10%;
+  width: 60%;
+  height: 120%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06), rgba(255,255,255,0.18));
+  transform: skewX(-20deg);
+  filter: blur(6px);
+  opacity: 0.0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  animation: hiw-shimmer 2.8s linear infinite;
+}
+
+/* make shimmer subtle by lowering opacity */
+@keyframes hiw-shimmer {
+  0%   { left: -60%; opacity: 0; }
+  10%  { opacity: 0.12; }
+  50%  { left: 100%; opacity: 0.06; }
+  90%  { opacity: 0.08; }
+  100% { left: 120%; opacity: 0; }
+}
+
+/* soft pulsing micro-animation to draw attention */
+.hiw-faq-more-btn[data-pulse="true"] { animation: hiw-pulse 6s ease-in-out infinite; }
+@keyframes hiw-pulse {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* small screens: full-width, touch-friendly, reduce animation */
+@media (max-width: 768px) {
+  .hiw-faq-more-btn {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+  .hiw-faq-more-btn::before { display: none; } /* remove shimmer on small devices */
+  .hiw-faq-more { padding: 0 16px; }
+}
+
+/* very small phones: slightly smaller text */
+@media (max-width: 420px) {
+  .hiw-faq-more-btn { padding: 10px 14px; font-size: 15px; }
+}
+
+/* reduced-motion: disable shimmer/pulse animations */
+@media (prefers-reduced-motion: reduce) {
+  .hiw-faq-more-btn::before { display: none; animation: none; }
+  .hiw-faq-more-btn[data-pulse="true"] { animation: none; }
+  .hiw-faq-more-btn { transition: none; }
+}
+/* ...existing code... */
+/* ...existing code... */
+
+
+.hiw-faq-section { padding: 40px 0 60px; }
+.hiw-faq-grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+.hiw-faq {
+  background:#fff;border-radius:12px;padding:14px 16px;border:1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 6px 18px rgba(8,64,160,0.04);
+}
+.hiw-faq summary { font-weight:600; cursor:pointer; list-style:none; padding:8px 0; }
+.hiw-faq p { margin-top:8px; color:var(--light-text); line-height:1.6; }
+
+/* CTA */
+.hiw-cta-section { padding: 48px 0 80px; background:linear-gradient(90deg,#007BFF08,#FFD70008); text-align:center; }
+.hiw-cta-inner { max-width:900px;margin:0 auto; padding:28px 20px; border-radius:14px; background:linear-gradient(180deg,#fff,#f8fbff); box-shadow:var(--shadow-lg); }
+.hiw-cta-inner h3 { font-size:24px; margin-bottom:8px; }
+.hiw-cta-inner p { color:var(--light-text); margin-bottom:16px; }
+.hiw-cta-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hiw-hero-inner { grid-template-columns: 1fr; gap: 24px; }
+  .hiw-hero-visual { order: -1; }
+  .hiw-steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .hiw-features-grid { grid-template-columns: repeat(2, 1fr); }
+  .hiw-faq-grid { grid-template-columns: 1fr; }
+  .hiw-phone-mockup { width: 260px; height: 420px; }
+}
+
+@media (max-width: 640px) {
+  .hiw-steps-grid { grid-template-columns: 1fr; gap:14px; }
+  .hiw-features-grid { grid-template-columns: 1fr; }
+  .hiw-hero { padding-top: 90px; }
+  .hiw-phone-mockup { width: 220px; height: 360px; }
+}
+
+/* small polish: animated hover on nav (keeps consistency) */
+.nav-menu a:hover::after { background: linear-gradient(90deg,#007BFF,#00C49A,#FFD700); }
+
+/* accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hiw-bike { animation: none; }
+  .hiw-step-card, .feature-card { transition: none; transform: none; }
 }

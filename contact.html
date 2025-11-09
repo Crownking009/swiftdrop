@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Contact Us — SwiftDrop</title>
+
+  <!-- project styles (keeps consistent styling with the site) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet for the mini contact map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <style>
+    /* Contact page specific styles (sd-contact prefix to avoid conflicts) */
+    .sd-contact-hero {
+      padding: 88px 20px 36px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(3,122,255,0.06), rgba(255,255,255,0));
+    }
+    .sd-contact-hero .sd-contact-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .sd-contact-hero .sd-contact-sub {
+      max-width: 920px;
+      margin: 0 auto;
+      color: rgba(30,30,30,0.75);
+      font-size: clamp(14px, 1.6vw, 18px);
+    }
+
+    .sd-contact-container {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 28px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    /* left column: contact details + map */
+    .sd-contact-info {
+      background: linear-gradient(180deg, #fff, #fbfdff);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .sd-contact-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .sd-contact-card {
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      box-shadow: 0 6px 18px rgba(3,122,255,0.04);
+    }
+    .sd-contact-card .icon {
+      width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#007BFF22,#FFD70022);
+      color:var(--primary-blue);
+      font-size:18px;
+    }
+    .sd-contact-card h4 { font-size:14px;margin:0 0 4px 0; }
+    .sd-contact-card p { margin:0;color:var(--light-text);font-size:13px; }
+
+    .sd-contact-details {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+      font-size:14px;
+      color:var(--dark-charcoal);
+    }
+
+    .sd-contact-map {
+      margin-top: 18px;
+      height: 260px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f1f7ff;
+    }
+
+    /* right column: form */
+    .sd-contact-form {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .sd-contact-form h3 { margin: 0 0 8px 0; font-size:20px; }
+    .sd-contact-form p { margin: 0 0 14px 0; color:var(--light-text); }
+
+    .sd-form-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .sd-input, .sd-textarea, .sd-select {
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6eefc;
+      outline:none;
+      background:#fbfdff;
+      font-size:14px;
+      box-sizing:border-box;
+    }
+    .sd-textarea { min-height:120px; resize:vertical; }
+
+    .sd-form-actions {
+      display:flex;
+      gap:12px;
+      margin-top:10px;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    .sd-note { font-size:13px; color:var(--light-text); margin-top:10px; }
+
+    /* success banner */
+    .sd-success {
+      display:none;
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:10px;
+      background:linear-gradient(90deg,#00C49A22,#007BFF22);
+      color:var(--dark-charcoal);
+      font-weight:600;
+    }
+
+    /* responsive */
+    @media (max-width: 980px) {
+      .sd-contact-container { grid-template-columns: 1fr; padding: 0 16px; }
+      .sd-contact-map { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- reuse site navigation to stay consistent -->
+  <nav class="navbar glass-nav">
+    <div class="container nav-container">
+      <div class="logo pulse-logo">
+        <div class="logo-icon"><i class="fas fa-motorcycle"></i></div>
+        <span>Swift<span class="gold">Drop</span></span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a href="login.html" class="btn-secondary glow-btn">Login</a>
+        <a href="register.html" class="btn-primary glow-btn">Sign Up</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header class="sd-contact-hero">
+    <h1 class="sd-contact-title gradient-text">Get in touch with SwiftDrop</h1>
+    <p class="sd-contact-sub">Questions, partnerships, media or support — we’re here to help. Send us a message and our team will respond as soon as possible.</p>
+  </header>
+
+  <!-- main content -->
+  <main>
+    <section class="sd-contact-container" aria-labelledby="contact-heading">
+      <!-- left: info + map -->
+      <aside class="sd-contact-info" aria-label="Contact information">
+        <div class="sd-contact-cards" role="list">
+          <div class="sd-contact-card" role="listitem">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Call Us</h4>
+              <p>+234 800 000 0000</p>
+            </div>
+          </div>
+
+          <div class="sd-contact-card" role="listitem">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p>support@swiftdrop.ng</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sd-contact-cards" style="margin-top:8px;">
+          <div class="sd-contact-card">
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Head Office</h4>
+              <p>Ikeja, Lagos, Nigeria</p>
+            </div>
+          </div>
+
+          <div class="sd-contact-card">
+            <div class="icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon–Sat: 08:00–20:00</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sd-contact-details">
+          <div><strong>Business Inquiries:</strong> partnerships@swiftdrop.ng</div>
+          <div><strong>Rider Support:</strong> riders@swiftdrop.ng</div>
+          <div class="sd-note">Prefer phone? Call our hotline for urgent requests. For general enquiries use the form.</div>
+        </div>
+
+        <div id="sd-contact-map" class="sd-contact-map" aria-hidden="false" title="Map showing our Lagos office"></div>
+      </aside>
+
+      <!-- right: contact form -->
+      <section class="sd-contact-form" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Send us a message</h3>
+        <p>Fill out the form and we'll get back to you within 24 hours.</p>
+
+        <form id="sd-contactForm" class="sd-form-grid" novalidate>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <input class="sd-input" name="firstName" id="firstName" type="text" placeholder="First name" required aria-required="true" />
+            <input class="sd-input" name="lastName" id="lastName" type="text" placeholder="Last name" required aria-required="true" />
+          </div>
+
+          <input class="sd-input" name="email" id="email" type="email" placeholder="Email address" required aria-required="true" />
+          <input class="sd-input" name="phone" id="phone" type="tel" placeholder="Phone (optional)" />
+
+          <select class="sd-select" name="topic" id="topic" required>
+            <option value="">Select topic</option>
+            <option>Support / Delivery Issue</option>
+            <option>Business Partnership</option>
+            <option>Media Request</option>
+            <option>Careers</option>
+            <option>Other</option>
+          </select>
+
+          <textarea class="sd-textarea" name="message" id="message" placeholder="How can we help? Tell us as much as you can..." required aria-required="true"></textarea>
+
+          <div class="sd-form-actions">
+            <button type="submit" class="btn-primary">Send Message</button>
+            <button type="reset" class="btn-outline" style="padding:10px 14px;border-radius:10px;">Reset</button>
+          </div>
+
+          <div id="sd-success" class="sd-success" role="status" aria-live="polite">Thanks — your message has been sent. We'll be in touch shortly.</div>
+          <div id="sd-error" class="sd-note" style="display:none;color:#b00020;"></div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Swift<span class="gold">Drop</span></span>
+                    </div>
+                    <p>Deliver Smarter. Faster. Easier.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Started</h4>
+                    <ul>
+                        <li><a href="register.html">Sign Up</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="become-rider.html">Become a Rider</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SwiftDrop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <!-- dependencies -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+  <!-- page script: map + form handling -->
+  <script>
+    (function () {
+      // Initialize small Leaflet map (after leaflet script loads)
+      function initMap() {
+        if (!window.L) return;
+        const mapEl = document.getElementById('sd-contact-map');
+        if (!mapEl) return;
+        const map = L.map(mapEl, { zoomControl: false, attributionControl: false }).setView([6.5244, 3.3792], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+        const marker = L.marker([6.5244, 3.3792]).addTo(map).bindPopup('SwiftDrop — Lagos Office').openPopup();
+        // gentle pan to show surrounding area
+        map.once('load', () => map.invalidateSize());
+        window.addEventListener('resize', () => map.invalidateSize());
+      }
+      // wait for leaflet to be loaded
+      function waitLeaflet() {
+        if (window.L) { initMap(); } else { setTimeout(waitLeaflet, 150); }
+      }
+      waitLeaflet();
+
+      // form handling: simple client-side validation + fake submit
+      const form = document.getElementById('sd-contactForm');
+      const success = document.getElementById('sd-success');
+      const error = document.getElementById('sd-error');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        success.style.display = 'none';
+        error.style.display = 'none';
+
+        // basic validation
+        const email = form.email.value.trim();
+        const first = form.firstName.value.trim();
+        const message = form.message.value.trim();
+        if (!first || !email || !message) {
+          error.textContent = 'Please fill required fields: name, email and message.';
+          error.style.display = 'block';
+          return;
+        }
+
+        // simulate async submit
+        const btn = form.querySelector('button[type="submit"]');
+        const oldText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = oldText;
+          form.reset();
+          success.style.display = 'block';
+          error.style.display = 'none';
+        }, 900);
+      });
+    })();
+  </script>
+</body>
+</html>
