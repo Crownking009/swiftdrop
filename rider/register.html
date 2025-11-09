@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Registration - SwiftDrop</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-brand">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <span>Swift<span class="gold">Drop</span></span>
+                </div>
+                <h1>Become a SwiftDrop Rider</h1>
+                <p>Join our network of verified riders and start earning. Flexible hours, great income potential.</p>
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Earn up to ₦150,000/month</span>
+                    </div>
+                    <div class="auth-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Flexible working hours</span>
+                    </div>
+                    <div class="auth-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Weekly payouts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <a href="../index.html" class="back-home-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Home</span>
+                </a>
+                
+                <div class="auth-header">
+                    <h2>Rider Registration</h2>
+                    <p>Already registered? <a href="login.html">Login</a></p>
+                </div>
+                
+                <form id="riderRegisterForm" class="auth-form">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Residential Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Vehicle Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">Vehicle Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="vehicleType">Vehicle Type</label>
+                            <select id="vehicleType" name="vehicleType" class="form-control" required>
+                                <option value="">Select vehicle type</option>
+                                <option value="motorcycle">Motorcycle</option>
+                                <option value="tricycle">Tricycle (Keke)</option>
+                                <option value="car">Car</option>
+                                <option value="van">Van</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="vehicleBrand">Vehicle Brand & Model</label>
+                            <input type="text" id="vehicleBrand" name="vehicleBrand" placeholder="e.g. Honda CG 125" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plateNumber">Plate Number</label>
+                            <input type="text" id="plateNumber" name="plateNumber" placeholder="e.g. LAG-123-AB" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Bank Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">Bank Information</h3>
+                        <small class="info-text">Users will pay directly to this account</small>
+                        
+                        <div class="form-group">
+                            <label for="bankName">Bank Name</label>
+                            <select id="bankName" name="bankName" class="form-control" required>
+                                <option value="">Select bank</option>
+                                <option value="access">Access Bank</option>
+                                <option value="gtb">GTBank</option>
+                                <option value="firstbank">First Bank</option>
+                                <option value="uba">UBA</option>
+                                <option value="zenith">Zenith Bank</option>
+                                <option value="fidelity">Fidelity Bank</option>
+                                <option value="union">Union Bank</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="accountNumber">Account Number</label>
+                            <input type="text" id="accountNumber" name="accountNumber" maxlength="10" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="accountName">Account Name</label>
+                            <input type="text" id="accountName" name="accountName" placeholder="Name as shown on bank account" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Documents Upload -->
+                    <div class="form-section">
+                        <h3 class="section-title">Required Documents</h3>
+                        
+                        <div class="form-group">
+                            <label for="idCard">Valid ID Card</label>
+                            <input type="file" id="idCard" name="idCard" accept="image/*,.pdf" required>
+                            <small>National ID, Driver's License, or Voter's Card</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="vehicleDoc">Vehicle Registration</label>
+                            <input type="file" id="vehicleDoc" name="vehicleDoc" accept="image/*,.pdf" required>
+                            <small>Vehicle papers or proof of ownership</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profilePhoto">Profile Photo</label>
+                            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" required>
+                            <small>Clear photo of yourself</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="form-section">
+                        <h3 class="section-title">Create Password</h3>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="password" name="password" required>
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <small>At least 8 characters</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Terms -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span>I agree to the <a href="../terms.html">Terms & Conditions</a> and understand the <strong>20% commission policy</strong></span>
+                        </label>
+                    </div>
+                    
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Commission Policy:</strong>
+                            <p>A 20% commission will be deducted from your wallet for each accepted order. Maintain a minimum wallet balance of ₦1,000 to accept orders.</p>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-block">
+                        <span>Submit Application</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Password toggle
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                const icon = this.querySelector('i');
+                
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('riderRegisterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting application...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                const riderData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    vehicleType: document.getElementById('vehicleType').value,
+                    vehicleBrand: document.getElementById('vehicleBrand').value,
+                    plateNumber: document.getElementById('plateNumber').value,
+                    bankName: document.getElementById('bankName').value,
+                    accountNumber: document.getElementById('accountNumber').value,
+                    accountName: document.getElementById('accountName').value,
+                    userType: 'rider',
+                    status: 'pending',
+                    walletBalance: 0,
+                    acceptCOD: true,
+                    isOnline: false
+                };
+                
+                localStorage.setItem('swiftdrop_rider', JSON.stringify(riderData));
+                
+                alert('Application submitted successfully! You will be notified once your account is verified (usually within 24 hours).');
+                
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

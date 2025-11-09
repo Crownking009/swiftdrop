@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FAQ — SwiftDrop</title>
+
+  <!-- site styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- page styles -->
+  <link rel="stylesheet" href="css/faq.css">
+
+  <!-- icons / fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar glass-nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-motorcycle"></i></div>
+        <span>Swift<span class="gold">Drop</span></span>
+      </div>
+
+      <ul class="nav-menu" role="menubar" aria-label="Primary">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="how-it-works.html">How It Works</a></li>
+        <li role="none"><a role="menuitem" href="pricing.html">Pricing</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
+        <li role="none"><a role="menuitem" href="faq.html">FAQ</a></li>
+      </ul>
+
+      <div class="nav-buttons">
+        <a href="login.html" class="btn-secondary">Login</a>
+        <a href="register.html" class="btn-primary">Sign Up</a>
+      </div>
+      <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <header class="faq-hero">
+    <div class="container">
+      <p class="section-label">Support</p>
+      <h1 class="faq-hero-title gradient-text">Frequently Asked Questions</h1>
+      <p class="faq-hero-sub">Everything you need to know about deliveries, riders, pricing and support.</p>
+
+      <div class="faq-search-wrap">
+        <input id="faqSearch" class="faq-search" type="search" placeholder="Search FAQs — e.g. 'pricing', 'rider', 'schedule'">
+        <button id="faqClear" class="faq-clear" aria-label="Clear search"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="faq-main">
+    <div class="container faq-grid">
+      <aside class="faq-categories" aria-label="FAQ categories">
+        <div class="faq-cats-inner">
+          <h4>Categories</h4>
+          <ul>
+            <li><button class="faq-cat-btn active" data-filter="all">All</button></li>
+            <li><button class="faq-cat-btn" data-filter="orders">Orders & Delivery</button></li>
+            <li><button class="faq-cat-btn" data-filter="pricing">Pricing</button></li>
+            <li><button class="faq-cat-btn" data-filter="business">Business & API</button></li>
+            <li><button class="faq-cat-btn" data-filter="support">Support</button></li>
+            <li><button class="faq-cat-btn" data-filter="riders">Dispatch Riders</button></li>
+          </ul>
+        </div>
+      </aside>
+
+      <section class="faq-list" aria-live="polite">
+        <div class="faq-list-inner">
+          <!-- Orders -->
+          <details class="faq-item" data-cat="orders">
+            <summary><span class="faq-q">How do I place an order?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Use our booking form on the site or app. Enter pickup & delivery addresses, select package size and speed, then confirm payment or choose COD where available.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="orders">
+            <summary><span class="faq-q">Can I schedule deliveries?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Yes—choose 'Schedule' during checkout to set a date/time. We support same-day and future bookings.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="orders">
+            <summary><span class="faq-q">What if recipient is unavailable?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Riders call recipients; you can set delivery instructions. Options: leave with neighbor, hold, or return-to-sender. Contact support for urgent cases.</p></div>
+          </details>
+
+          <!-- Pricing -->
+          <details class="faq-item" data-cat="pricing">
+            <summary><span class="faq-q">How is pricing calculated?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Pricing = distance + package size/weight + service speed. Use the Pricing calculator for instant quotes.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="pricing">
+            <summary><span class="faq-q">Do you offer business discounts?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Yes—volume discounts and custom plans available. Email partnerships@swiftdrop.ng.</p></div>
+          </details>
+
+          <!-- Business & API -->
+          <details class="faq-item" data-cat="business">
+            <summary><span class="faq-q">Is there an API?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>We provide REST APIs for booking, tracking and webhooks. Request access via partnerships@swiftdrop.ng.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="business">
+            <summary><span class="faq-q">Can I upload orders in bulk?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Yes—CSV uploads and platform integrations available. Contact onboarding for setup.</p></div>
+          </details>
+
+          <!-- Support -->
+          <details class="faq-item" data-cat="support">
+            <summary><span class="faq-q">How do I report a delivery issue?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Report via the app or Contact page. Provide order ID, rider name (if shown) and photos if applicable.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="support">
+            <summary><span class="faq-q">What is your response time?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Typical reply < 24 hours. Urgent hotline requests prioritized during business hours.</p></div>
+          </details>
+
+          <!-- Dispatch Riders -->
+          <details class="faq-item" data-cat="riders">
+            <summary><span class="faq-q">How are riders vetted?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Riders complete ID checks, vehicle inspection and training before activation.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="riders">
+            <summary><span class="faq-q">What equipment must riders carry?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Riders carry ID, safety gear, secure carriers and a charged phone. Protective packaging recommended for fragile items.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="riders">
+            <summary><span class="faq-q">How are riders paid?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Payouts processed per agreement (daily/weekly) via mobile money or bank transfer.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="riders">
+            <summary><span class="faq-q">Are riders insured?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>We provide rider liability and limited cargo insurance for qualifying services. Contact support for coverage details.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="riders">
+            <summary><span class="faq-q">How do riders contact dispatch?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Riders use the Rider app to message dispatch or call the rider hotline for emergencies.</p></div>
+          </details>
+
+          <!-- User / policy -->
+          <details class="faq-item" data-cat="support">
+            <summary><span class="faq-q">How is proof of delivery captured?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Proof via signature, photo or OTP—attached to order history for review.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="support">
+            <summary><span class="faq-q">What items are restricted?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Prohibited: hazardous materials, illegal goods, and regulated items. See Terms & Conditions or contact support for exceptions.</p></div>
+          </details>
+
+          <details class="faq-item" data-cat="support">
+            <summary><span class="faq-q">How do refunds & claims work?</span><i class="fas fa-chevron-down faq-toggle-icon"></i></summary>
+            <div class="faq-a"><p>Submit claims on Contact page with evidence. We investigate and process refunds per policy.</p></div>
+          </details>
+
+        </div>
+
+        <div class="faq-more-wrap">
+          <a href="contact.html" class="faq-contact-btn btn-primary" title="Contact Support">Contact Support</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="font-size:20px;color:var(--primary-blue)"><i class="fas fa-motorcycle"></i></div>
+          <div><strong>SwiftDrop</strong><div style="font-size:13px;color:var(--light-text)">Deliver Smarter. Faster. Easier.</div></div>
+        </div>
+        <div style="color:var(--light-text);font-size:14px">© 2025 SwiftDrop — All rights reserved</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    // mark active nav link
+    (function markActive() {
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      if (!navLinks.length) return;
+      const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      navLinks.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if (href === current || (current === '' && href === 'index.html')) link.classList.add('active');
+        else link.classList.remove('active');
+        link.addEventListener('click', () => { navLinks.forEach(l => l.classList.remove('active')); link.classList.add('active'); });
+      });
+    })();
+
+    // accordion icon toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const icon = item.querySelector('.faq-toggle-icon');
+      item.addEventListener('toggle', () => {
+        if (item.open) icon.classList.add('open'); else icon.classList.remove('open');
+      });
+    });
+
+    // category filter
+    document.querySelectorAll('.faq-cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.faq-item').forEach(it => {
+          it.style.display = (filter === 'all' || it.dataset.cat === filter) ? '' : 'none';
+          if (it.open) it.open = false;
+        });
+        const firstVisible = Array.from(document.querySelectorAll('.faq-item')).find(el => el.style.display !== 'none');
+        if (firstVisible) firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    // search (scoped)
+    const searchEl = document.getElementById('faqSearch');
+    const clearBtnEl = document.getElementById('faqClear');
+    function doSearch(term) {
+      const q = (term || '').trim().toLowerCase();
+      document.querySelectorAll('.faq-item').forEach(it => {
+        const qText = ((it.querySelector('.faq-q')?.textContent || '') + ' ' + (it.querySelector('.faq-a')?.textContent || '')).toLowerCase();
+        const visible = !q || qText.includes(q);
+        it.style.display = visible ? '' : 'none';
+        if (!visible && it.open) it.open = false;
+      });
+    }
+    if (searchEl) searchEl.addEventListener('input', e => doSearch(e.target.value));
+    if (clearBtnEl) clearBtnEl.addEventListener('click', () => { if (searchEl) searchEl.value = ''; doSearch(''); });
+
+    // open first visible
+    document.addEventListener('DOMContentLoaded', () => {
+      const first = Array.from(document.querySelectorAll('.faq-item')).find(it => it.style.display !== 'none');
+      if (first) first.open = true;
+    });
+  })();
+  </script>
+</body>
+</html>
