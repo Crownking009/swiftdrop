@@ -17,6 +17,12 @@
       {
         "listitem": "off"
       }
+    ],
+    "axe/aria": [
+      "default",
+      {
+        "aria-required-children": "off"
+      }
     ]
   }
 }

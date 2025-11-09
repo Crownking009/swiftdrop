@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Become a Rider — SwiftDrop</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/become-rider.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar glass-nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-motorcycle"></i></div>
+        <span>Swift<span class="gold">Drop</span></span>
+      </div>
+      <ul class="nav-menu" role="menubar" aria-label="Primary">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a href="rider/login.html" class="btn-secondary">Login</a>
+        <a href="rider/register.html" class="btn-primary">Sign Up</a>
+      </div>
+      <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="rider-hero">
+    <div class="container rider-hero-inner">
+      <div class="rider-hero-content">
+        <p class="section-label">Drive with SwiftDrop</p>
+        <h1 class="rider-title gradient-text">Become a rider — earn on your schedule</h1>
+        <p class="rider-sub">Flexible hours, competitive payouts and support. Join our network of verified riders and start earning today.</p>
+        <div class="rider-hero-ctas">
+          <a href="rider/register.html" class="btn-primary">Apply Now</a>
+          <a href="about.html" class="btn-secondary">About Us</a>
+        </div>
+      </div>
+
+      <div class="rider-hero-visual" aria-hidden="true">
+        <div class="rider-mock">
+          <i class="fas fa-motorcycle"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Benefits -->
+    <section class="rider-benefits container">
+      <div class="section-header">
+        <h2>Why ride with SwiftDrop</h2>
+        <p class="section-sub">Built for flexibility and reliability — everything riders need to succeed.</p>
+      </div>
+
+      <div class="rider-benefit-grid">
+        <div class="benefit-card">
+          <div class="icon"><i class="fas fa-wallet"></i></div>
+          <h4>Competitive pay</h4>
+          <p>Clear fares, earnings tracking and fast payouts.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="icon"><i class="fas fa-clock"></i></div>
+          <h4>Flexible hours</h4>
+          <p>Work whenever you want — full time or part time.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h4>24/7 rider support</h4>
+          <p>Dedicated helpdesk and rider hotline for emergencies.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>Insurance & safety</h4>
+          <p>Rider liability and limited cargo protection for qualifying trips.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements & Onboarding -->
+    <section class="rider-onboard container">
+      <div class="rider-onboard-grid">
+        <div class="onboard-left">
+          <h3>Requirements</h3>
+          <ul class="req-list">
+            <li>Valid government ID and local phone number</li>
+            <li>Motorbike or tricycle with vehicle documents</li>
+            <li>Smartphone (Android or iOS) with data</li>
+            <li>Pass basic background check & training</li>
+          </ul>
+
+          <h3 class="mt">Onboarding process</h3>
+          <ol class="onboard-steps">
+            <li><strong>Apply</strong> — Submit basic details via the form below.</li>
+            <li><strong>Verify</strong> — Documents & background check.</li>
+            <li><strong>Train</strong> — Quick online & in-person session.</li>
+            <li><strong>Activate</strong> — Start taking jobs and earning.</li>
+          </ol>
+        </div>
+
+        <aside class="onboard-right" id="signup">
+          <h3>Rider application</h3>
+          <form id="rider-form" class="rider-form" novalidate>
+            <input class="sd-input" name="fullName" id="fullName" type="text" placeholder="Full name" required />
+            <input class="sd-input" name="phone" id="phone" type="tel" placeholder="Phone number" required />
+            <input class="sd-input" name="email" id="email" type="email" placeholder="Email (optional)" />
+            <select class="sd-select" name="vehicle" id="vehicle" required>
+              <option value="">Vehicle type</option>
+              <option value="motorbike">Motorbike</option>
+              <option value="tricycle">Tricycle</option>
+            </select>
+            <input class="sd-input" name="plate" id="plate" type="text" placeholder="Vehicle plate number" />
+            <label class="small">Upload docs (ID & vehicle) — placeholder</label>
+            <div class="file-placeholder">File upload will be available after integration.</div>
+
+            <div style="display:flex;gap:8px;">
+              <button type="submit" class="btn-primary" style="flex:1">Submit application</button>
+              <a href="contact.html" class="btn-outline" style="flex:1;text-align:center">Need help?</a>
+            </div>
+
+            <div id="rider-success" class="sd-success" role="status" aria-live="polite" style="display:none;margin-top:10px">Thanks — we received your application. We'll contact you shortly.</div>
+            <div id="rider-error" class="sd-note" style="display:none;color:#b00020;margin-top:8px"></div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Earnings estimator -->
+    <section id="earnings" class="rider-earnings container">
+      <div class="section-header">
+        <h2>Estimate earnings</h2>
+        <p class="section-sub">Quick estimate based on trips per day and average fare.</p>
+      </div>
+
+      <div class="earn-grid">
+        <div class="earn-controls">
+          <label>Trips per day</label>
+          <input type="range" id="trips" min="1" max="20" value="6" />
+          <div class="range-val"><span id="trips-val">6</span> trips</div>
+
+          <label>Average fare</label>
+          <input type="range" id="avgFare" min="500" max="8000" step="100" value="1500" />
+          <div class="range-val"><span id="fare-val">₦1,500</span></div>
+
+          <label>Days per week</label>
+          <input type="range" id="days" min="1" max="7" value="6" />
+          <div class="range-val"><span id="days-val">6</span> days</div>
+        </div>
+
+        <div class="earn-result">
+          <div class="earn-card">
+            <h3>Estimated weekly earnings</h3>
+            <div class="earn-amount" id="earn-week">₦54,000</div>
+            <p class="small">Before commissions & expenses</p>
+            <a href="register.html" class="btn-primary">Start earning</a>
+          </div>
+
+          <div class="earn-tips">
+            <h4>Maximize earnings</h4>
+            <ul>
+              <li>Work peak hours (mornings & evenings).</li>
+              <li>Keep a charged phone and powerbank.</li>
+              <li>Maintain high acceptance & completion rates.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rider FAQ -->
+    <section class="rider-faq container">
+      <div class="section-header">
+        <h2>Rider FAQs</h2>
+      </div>
+
+      <div class="rider-faq-grid">
+        <details><summary>How do I get paid?</summary><p>Payouts processed daily or weekly via mobile money or bank transfer depending on your preference.</p></details>
+        <details><summary>What documents do I need?</summary><p>Valid ID, vehicle registration, driver's license and proof of address where required.</p></details>
+        <details><summary>Can I work part-time?</summary><p>Yes — flexible scheduling allows you to work whenever you want.</p></details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="rider-cta container">
+      <div class="rider-cta-inner">
+        <h3>Ready to join SwiftDrop?</h3>
+        <p>Apply now and start earning — we’ll guide you through verification and training.</p>
+        <div class="rider-cta-actions">
+          <a href="rider/register.html" class="btn-primary">Apply Now</a>
+          <a href="contact.html" class="btn-secondary">Contact Rider Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Swift<span class="gold">Drop</span></span>
+                    </div>
+                    <p>Deliver Smarter. Faster. Easier.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Started</h4>
+                    <ul>
+                        <li><a href="register.html">Sign Up</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="become-rider.html">Become a Rider</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SwiftDrop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+  (function () {
+    // mark active nav
+    (function markActive(){ const navLinks = document.querySelectorAll('.nav-menu a'); const cur = (location.pathname.split('/').pop()||'index.html').toLowerCase(); navLinks.forEach(l=>{ const h=(l.getAttribute('href')||'').split('/').pop().toLowerCase(); if(h===cur||(!h&&cur==='index.html')) l.classList.add('active'); else l.classList.remove('active'); }); })();
+
+    // rider form submit (fake)
+    const form = document.getElementById('rider-form');
+    const success = document.getElementById('rider-success');
+    const ferr = document.getElementById('rider-error');
+    if (form) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        ferr.style.display='none';
+        success.style.display='none';
+        const name = form.fullName.value.trim();
+        const phone = form.phone.value.trim();
+        if (!name || !phone) { ferr.textContent='Please provide name and phone.'; ferr.style.display='block'; return; }
+        const btn = form.querySelector('button[type="submit"]');
+        const old = btn.innerHTML; btn.disabled=true; btn.innerHTML='Submitting...';
+        setTimeout(()=>{ btn.disabled=false; btn.innerHTML=old; form.reset(); success.style.display='block'; },900);
+      });
+    }
+
+    // earnings estimator
+    const trips = document.getElementById('trips');
+    const tripsVal = document.getElementById('trips-val');
+    const fare = document.getElementById('avgFare');
+    const fareVal = document.getElementById('fare-val');
+    const days = document.getElementById('days');
+    const daysVal = document.getElementById('days-val');
+    const earnWeek = document.getElementById('earn-week');
+
+    function calcEarnings() {
+      const t = Number(trips.value||0);
+      const f = Number(fare.value||0);
+      const d = Number(days.value||0);
+      const weekly = t * f * d;
+      tripsVal.textContent = t;
+      fareVal.textContent = '₦' + f.toLocaleString();
+      daysVal.textContent = d;
+      earnWeek.textContent = '₦' + weekly.toLocaleString();
+    }
+    [trips,fare,days].forEach(el=>el&&el.addEventListener('input',calcEarnings));
+    calcEarnings();
+  })();
+  </script>
+</body>
+</html>

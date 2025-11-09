@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pricing — SwiftDrop</title>
+
+  <!-- core site styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- page styles -->
+  <link rel="stylesheet" href="css/pricing.css">
+
+  <!-- fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar glass-nav" role="navigation" aria-label="Main">
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-motorcycle"></i></div>
+        <span>Swift<span class="gold">Drop</span></span>
+      </div>
+
+      <ul class="nav-menu" role="menubar" aria-label="Primary">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html" class="active">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+
+      <div class="nav-buttons">
+        <a href="login.html" class="btn-secondary">Login</a>
+        <a href="register.html" class="btn-primary">Sign Up</a>
+      </div>
+      <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pr-hero">
+    <div class="container pr-hero-inner">
+      <div class="pr-hero-content">
+        <p class="section-label">Pricing</p>
+        <h1 class="pr-title gradient-text">Transparent delivery pricing — no surprises</h1>
+        <p class="pr-lead">Pay for distance, package size and speed. Choose single deliveries or scale with monthly plans for businesses.</p>
+        <div class="pr-hero-ctas">
+          <a href="#calculator" class="btn-primary">Estimate Now</a>
+          <a href="contact.html" class="btn-secondary">Talk to Sales</a>
+        </div>
+      </div>
+
+      <div class="pr-hero-visual" aria-hidden="true">
+        <div class="pr-cards-visual">
+          <div class="pr-card-pill pr-pill-1">Standard</div>
+          <div class="pr-card-pill pr-pill-2">Express</div>
+          <div class="pr-card-pill pr-pill-3">Business</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRICING TIERS -->
+  <main>
+    <section class="pr-tiers container">
+      <div class="section-header">
+        <h2>Choose a plan that fits</h2>
+        <p class="section-sub">Simple per-delivery plans and a subscription for businesses that move volume.</p>
+      </div>
+
+      <div class="pr-tier-grid">
+        <article class="pr-tier-card">
+          <div class="pr-tier-badge">Standard</div>
+          <h3>Affordable everyday deliveries</h3>
+          <p class="pr-tier-price">From <strong>₦1,500</strong></p>
+          <ul class="pr-tier-features">
+            <li><i class="fas fa-check"></i> Local riders, reliable pickup</li>
+            <li><i class="fas fa-check"></i> Real-time tracking</li>
+            <li><i class="fas fa-check"></i> Photo proof</li>
+          </ul>
+          <a class="btn-outline" href="#calculator">Estimate</a>
+        </article>
+
+        <article class="pr-tier-card pr-tier-popular">
+          <div class="pr-tier-badge">Express</div>
+          <h3>Faster delivery for urgent items</h3>
+          <p class="pr-tier-price">From <strong>₦2,500</strong></p>
+          <ul class="pr-tier-features">
+            <li><i class="fas fa-check"></i> Priority rider assignment</li>
+            <li><i class="fas fa-check"></i> Faster routing & ETA</li>
+            <li><i class="fas fa-check"></i> SMS & app alerts</li>
+          </ul>
+          <a class="btn-primary" href="#calculator">Estimate</a>
+        </article>
+
+        <article class="pr-tier-card">
+          <div class="pr-tier-badge">Business</div>
+          <h3>Volume plans and custom SLAs</h3>
+          <p class="pr-tier-price">From <strong>Contact</strong></p>
+          <ul class="pr-tier-features">
+            <li><i class="fas fa-check"></i> Volume discounts</li>
+            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+            <li><i class="fas fa-check"></i> API & SSO</li>
+          </ul>
+          <a class="btn-secondary" href="contact.html">Contact Sales</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRICE CALCULATOR -->
+    <section id="calculator" class="pr-calculator container">
+      <div class="pr-calc-grid">
+        <div class="pr-calc-left">
+          <h3>Instant price estimator</h3>
+          <p>Use the form to estimate delivery cost. This is an estimate — final price shown at checkout.</p>
+
+          <form id="pr-calc-form" class="pr-calc-form" novalidate>
+            <label class="pr-label">Pickup area</label>
+            <select id="pr-pickup" class="pr-select" required>
+              <option value="">Select pickup area</option>
+              <option value="0">Ikeja</option>
+              <option value="1">Yaba</option>
+              <option value="2">Surulere</option>
+              <option value="3">Lekki</option>
+            </select>
+
+            <label class="pr-label">Distance (km)</label>
+            <div class="pr-distance">
+              <input id="pr-distance" class="pr-range" type="range" min="1" max="40" value="5" />
+              <div class="pr-distance-value"><span id="pr-distance-val">5</span> km</div>
+            </div>
+
+            <label class="pr-label">Package size</label>
+            <select id="pr-size" class="pr-select">
+              <option value="small">Small (documents)</option>
+              <option value="medium">Medium (box)</option>
+              <option value="large">Large (bulky)</option>
+            </select>
+
+            <label class="pr-label">Speed</label>
+            <div class="pr-radio-row">
+              <label class="pr-radio"><input type="radio" name="speed" value="standard" checked /> Standard</label>
+              <label class="pr-radio"><input type="radio" name="speed" value="express" /> Express (+30%)</label>
+            </div>
+
+            <div class="pr-estimate">
+              <div class="pr-estimate-line">
+                <div>Estimated price</div>
+                <div class="pr-estimate-amount" id="pr-estimate">₦2,000</div>
+              </div>
+              <div class="pr-estimate-breakdown" id="pr-breakdown">
+                <div>Base fare: ₦1,200</div>
+                <div>Distance: ₦500</div>
+                <div>Size surcharge: ₦100</div>
+                <div>Speed: ₦200</div>
+              </div>
+              <div class="pr-estimate-actions">
+                <a href="register.html" class="btn-primary">Book Delivery</a>
+                <a href="contact.html" class="btn-secondary">Need Help?</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="pr-calc-right">
+          <div class="pr-why">
+            <h4>Why our pricing?</h4>
+            <ul>
+              <li>Transparent, distance-based fares</li>
+              <li>No hidden fees — surcharges shown up-front</li>
+              <li>Volume discounts and custom plans for businesses</li>
+            </ul>
+          </div>
+
+          <div class="pr-compare">
+            <h4>Quick compare</h4>
+            <table>
+              <thead><tr><th></th><th>Standard</th><th>Express</th></tr></thead>
+              <tbody>
+                <tr><td>ETA</td><td>30–90 min</td><td>15–45 min</td></tr>
+                <tr><td>Base</td><td>₦1,200</td><td>₦1,600</td></tr>
+                <tr><td>Tracking</td><td><i class="fas fa-check"></i></td><td><i class="fas fa-check"></i></td></tr>
+                <tr><td>Proof</td><td><i class="fas fa-check"></i></td><td><i class="fas fa-check"></i></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pr-cta container">
+      <div class="pr-cta-inner">
+        <h3>Ready to start delivering smarter?</h3>
+        <p>Sign up, add your payment method and book your first delivery in minutes.</p>
+        <div class="pr-cta-actions">
+          <a href="register.html" class="btn-primary">Create Account</a>
+          <a href="contact.html" class="btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- small FAQ excerpt -->
+    <section class="pr-faq container">
+      <div class="section-header">
+        <h2>Pricing FAQ</h2>
+        <p class="section-sub">Short answers about pricing and billing.</p>
+      </div>
+
+      <div class="pr-faq-grid">
+        <details><summary>Do I pay per trip or monthly?</summary><p>Per trip by default. Businesses may choose subscription billing for volume discounts.</p></details>
+        <details><summary>Are taxes included?</summary><p>Prices shown exclude regulatory taxes; final checkout shows taxes where applicable.</p></details>
+        <details><summary>Can I get a corporate invoice?</summary><p>Yes — invoices and billing statements available for registered business accounts.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Swift<span class="gold">Drop</span></span>
+                    </div>
+                    <p>Deliver Smarter. Faster. Easier.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Started</h4>
+                    <ul>
+                        <li><a href="register.html">Sign Up</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="become-rider.html">Become a Rider</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SwiftDrop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <!-- calculator script (scoped) -->
+  <script>
+  (function () {
+    // utility rates (example, adjust as needed)
+    const BASE_STANDARD = 1200;
+    const BASE_EXPRESS = 1600;
+    const PER_KM = 100; // per km
+    const SIZE_SURCHARGE = { small: 0, medium: 100, large: 300 };
+    const EXPRESS_MULTIPLIER = 1.3;
+
+    const distanceEl = document.getElementById('pr-distance');
+    const distanceValEl = document.getElementById('pr-distance-val');
+    const sizeEl = document.getElementById('pr-size');
+    const speedEls = document.getElementsByName('speed');
+    const estimateEl = document.getElementById('pr-estimate');
+    const breakdownEl = document.getElementById('pr-breakdown');
+
+    function getSelectedSpeed() {
+      for (const el of speedEls) if (el.checked) return el.value;
+      return 'standard';
+    }
+
+    function compute() {
+      const km = Number(distanceEl.value || 0);
+      const size = sizeEl.value || 'small';
+      const speed = getSelectedSpeed();
+
+      const base = (speed === 'express') ? BASE_EXPRESS : BASE_STANDARD;
+      const distanceCost = Math.round(km * PER_KM);
+      const sizeCost = SIZE_SURCHARGE[size] || 0;
+      let subtotal = base + distanceCost + sizeCost;
+
+      if (speed === 'express') subtotal = Math.round(subtotal * EXPRESS_MULTIPLIER);
+
+      // format NGN
+      const format = (n) => '₦' + n.toLocaleString();
+
+      estimateEl.textContent = format(subtotal);
+
+      // breakdown (show pre-express breakdown if express)
+      const speedExtra = (speed === 'express') ? ` (express multiplier ${EXPRESS_MULTIPLIER}x)` : '';
+      breakdownEl.innerHTML = `
+        <div>Base fare: ${format(base)}</div>
+        <div>Distance (${km}km): ${format(distanceCost)}</div>
+        <div>Size surcharge: ${format(sizeCost)}</div>
+        <div>Speed adjustment${speedExtra}: ${speed === 'express' ? 'applied' : 'none'}</div>
+      `;
+    }
+
+    // events
+    if (distanceEl) {
+      distanceEl.addEventListener('input', () => {
+        distanceValEl.textContent = distanceEl.value;
+        compute();
+      });
+    }
+    if (sizeEl) sizeEl.addEventListener('change', compute);
+    Array.from(speedEls).forEach(r => r.addEventListener('change', compute));
+
+    // initial compute
+    compute();
+
+    // mark nav active (fallback if no global script)
+    (function markActive() {
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      if (!navLinks.length) return;
+      const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      navLinks.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if (href === current || (current === '' && href === 'index.html')) link.classList.add('active');
+        else link.classList.remove('active');
+      });
+    })();
+  })();
+  </script>
+</body>
+</html>
